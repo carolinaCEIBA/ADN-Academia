@@ -1,0 +1,1 @@
+insert into programacion(clase, aprendiz, instructor, fecha, hora ) values(:clase, :aprendiz, :instructor, :fecha, :hora)

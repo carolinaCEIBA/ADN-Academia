@@ -1,0 +1,1 @@
+select * from aprendiz where id = :id;

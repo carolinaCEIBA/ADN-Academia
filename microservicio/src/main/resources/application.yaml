@@ -1,0 +1,28 @@
+jasypt:
+  encryptor:
+    password: ${jasyptpwd:secretkey}
+    algorithm: PBEWithMD5AndDES
+
+server:
+  port: 8000
+  servlet:
+    context-path: /microservicio
+    session:
+      timeout: 21600s
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    jdbcUrl: jdbc:mysql://localhost:3306/academy
+    username: root
+    password: ENC(nRpyaSxfNf14CCn6taZnbw==)
+    hikari:
+      poolName: pool
+  flyway:
+    baselineOnMigrate: true
+    validateOnMigrate: false
+
+
