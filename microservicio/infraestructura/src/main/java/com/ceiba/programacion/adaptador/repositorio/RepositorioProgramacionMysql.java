@@ -41,12 +41,8 @@ public class RepositorioProgramacionMysql implements RepositorioProgramacion {
     public Long contadorteoria() {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("aprendiz", 2);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlContadorTeoria, paramSource, new ResultSetExtractor<Long>() {
-            @Override
-            public Long extractData(ResultSet rs) throws SQLException, DataAccessException {
-                return rs.getLong("horas");
-            }
-        });
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContadorTeoria, paramSource, Long.class);
+
     }
 
 }

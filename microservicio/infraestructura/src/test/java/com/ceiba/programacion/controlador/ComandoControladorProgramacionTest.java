@@ -33,7 +33,7 @@ class ComandoControladorProgramacionTest {
     private RepositorioProgramacion repositorioProgramacion;
 
 
-    @Test
+    /**@Test
     void crearFacturaExitosa() throws Exception {
         var comandoFacturarTestDataBuilder = new ComandoProgramarTestDataBuilder().crearPorDefecto().build();
 
@@ -47,7 +47,7 @@ class ComandoControladorProgramacionTest {
 
         //var facturaGuardada = repositorioProgramacion
 
-    }
+    }**/
 
 
 }
