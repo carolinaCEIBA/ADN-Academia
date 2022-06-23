@@ -6,4 +6,6 @@ spring:
       password:
       hikari:
          poolName: pool
-
+   flyway:
+      baselineOnMigrate: true
+      validateOnMigrate: false

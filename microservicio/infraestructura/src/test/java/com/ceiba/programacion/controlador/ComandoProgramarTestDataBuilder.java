@@ -4,7 +4,6 @@ import com.ceiba.factura.comando.ComandoSolicitudProgramar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class ComandoProgramarTestDataBuilder {
@@ -17,20 +16,19 @@ public class ComandoProgramarTestDataBuilder {
     private String hora;
     private String asistencia;
 
-    /**public ComandoFacturarTestDataBuilder crearPorDefecto() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat();
+    public ComandoProgramarTestDataBuilder programacionPorDefecto() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         this.idprogramacion = 1l;
         this.clase = 1l;
         this.aprendiz = 1l;
         this.instructor = 1l;
-        this.fecha = sdf.parse("2020-06-18");
+        this.fecha = sdf.parse("2021/06/18");
         this.hora = "03:00 pm";
-        this.asistencia = "Completa";
+        this.asistencia = "NA";
         return this;
-
     }
 
     public ComandoSolicitudProgramar build() {
         return new ComandoSolicitudProgramar(this.idprogramacion, this.clase, this.aprendiz, this.instructor, this.fecha, this.hora, this.asistencia);
-    }**/
+    }
 }

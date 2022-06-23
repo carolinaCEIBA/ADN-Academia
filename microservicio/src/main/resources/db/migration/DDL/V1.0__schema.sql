@@ -7,8 +7,8 @@ create table aprendiz (
  eps varchar(100) not null,
  categoria varchar(100) not null,
  inasistencia int(10),
- valorcurso  double(16,4) not null,
- adicional  double(16,4) ,
+ valorcurso  double(16) not null,
+ adicional  double(16) ,
  refuerzo int(11) ,
  primary key (id)
 );

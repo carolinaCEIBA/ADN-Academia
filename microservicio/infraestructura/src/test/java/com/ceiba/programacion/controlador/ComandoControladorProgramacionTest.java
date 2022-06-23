@@ -14,6 +14,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -22,7 +27,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = ApplicationMock.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class ComandoControladorProgramacionTest {
-
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -32,22 +36,29 @@ class ComandoControladorProgramacionTest {
     @Autowired
     private RepositorioProgramacion repositorioProgramacion;
 
+    @Test
+    void crearProgramacionExitosa() throws Exception{
+        var comandoProgramarTestDataBuilder = new ComandoProgramarTestDataBuilder().programacionPorDefecto().build();
 
-    /**@Test
-    void crearFacturaExitosa() throws Exception {
-        var comandoFacturarTestDataBuilder = new ComandoProgramarTestDataBuilder().crearPorDefecto().build();
-
-        var resultado = mocMvc.perform(post("/factura")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(comandoFacturarTestDataBuilder)))
+        var resultado = mocMvc.perform(post("/academia/programacion")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(comandoProgramarTestDataBuilder)))
                 .andExpect(status().is2xxSuccessful()).andReturn();
 
         String jsonResult = resultado.getResponse().getContentAsString();
-        var respuesta = objectMapper.readValue(jsonResult, RespuestaFacturar.class);
+        var respuesta = objectMapper.readValue(jsonResult, RespuestaProgramar.class);
+        var programacionGuardada = repositorioProgramacion.obtener(respuesta.getValor());
 
-        //var facturaGuardada = repositorioProgramacion
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date fecha = sdf.parse("2021/06/18");
+        Assertions.assertEquals(1l, programacionGuardada.getIdprogramacion());
+        Assertions.assertEquals(1l, programacionGuardada.getClase());
+        Assertions.assertEquals(2l, programacionGuardada.getAprendiz());
+        Assertions.assertEquals(1l, programacionGuardada.getInstructor());
+        Assertions.assertEquals(fecha, programacionGuardada.getFecha());
+        Assertions.assertEquals("03:00 pm", programacionGuardada.getHora());
+        Assertions.assertEquals("NA", programacionGuardada.getAsistencia());
 
-    }**/
-
+    }
 
 }

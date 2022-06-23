@@ -74,8 +74,6 @@ public class Aprendiz {
         this.refuerzo = refuerzo;
 
     }
-
-
     public static Aprendiz crear(SolicitudRegistrarAp solicitudRegistrarAp) {
         double adicional = Aprendiz.calculoRefuerzo(solicitudRegistrarAp.getRefuerzo(), solicitudRegistrarAp.getInasistencia());
         ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getNombre(), "El nombre del aprendiz es obligatorio para el registro");
@@ -83,6 +81,12 @@ public class Aprendiz {
         return new Aprendiz(solicitudRegistrarAp.getId(), solicitudRegistrarAp.getNombre(), solicitudRegistrarAp.getApellido(), solicitudRegistrarAp.getTipodoc(), solicitudRegistrarAp.getDocumento(), solicitudRegistrarAp.getEps(), solicitudRegistrarAp.getCategoria(), solicitudRegistrarAp.getInasistencia(), solicitudRegistrarAp.getValorcurso(), adicional, solicitudRegistrarAp.getRefuerzo());
     }
 
+    public static Aprendiz reconstruir(Long id, String nombre, String apellido, String tipodoc, String documento, String eps, String categoria, Long inasistencia, Double valorcurso, Double adicional, Long refuerzo) {
+        ValidadorArgumento.validarObligatorio(nombre, "El nombre del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(documento, "El ... del aprendiz es obligatorio para el registro");
+
+        return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, inasistencia, valorcurso, adicional, refuerzo);
+    }
     public static Double calculoRefuerzo(Long refuerzo, Long inasistencia) {
         double adicionalRefuerzo = 0;
         double adicionalInasistencia = 0;

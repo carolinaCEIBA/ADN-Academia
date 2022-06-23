@@ -58,7 +58,7 @@ public class Programacion {
 
     public static Programacion crear(SolicitudProgramar solicitudProgramar) {
         Date fechaHabil = Programacion.validacionClasePractica(solicitudProgramar.getFecha(), solicitudProgramar.getClase());
-        //ValidadorArgumento.validarObligatorio(solicitudProgramar.getIdprogramacion(), "El id para la programación es obligatorio");
+        ValidadorArgumento.validarObligatorio(solicitudProgramar.getIdprogramacion(), "El id para la programación es obligatorio");
         ValidadorArgumento.validarObligatorio(solicitudProgramar.getClase(), "El tipo de clase es requerido para programar");
         ValidadorArgumento.validarObligatorio(solicitudProgramar.getAprendiz(), "El aprendiz es requerido para programar");
         ValidadorArgumento.validarObligatorio(solicitudProgramar.getInstructor(), "El instructor es requerido para programar");
@@ -68,6 +68,16 @@ public class Programacion {
         return new Programacion(solicitudProgramar.getIdprogramacion(), solicitudProgramar.getClase(), solicitudProgramar.getAprendiz(), solicitudProgramar.getInstructor(), fechaHabil, solicitudProgramar.getHora(), solicitudProgramar.getAsistencia());
     }
 
+    public static Programacion reconstruir(Long idprogramacion, Long clase, Long aprendiz, Long instructor, Date fecha, String hora, String asistencia) {
+        ValidadorArgumento.validarObligatorio(idprogramacion, "El id para la programación es obligatorio");
+        ValidadorArgumento.validarObligatorio(clase, "El tipo de clase es requerido para programar");
+        ValidadorArgumento.validarObligatorio(aprendiz, "El aprendiz es requerido para programar");
+        ValidadorArgumento.validarObligatorio(instructor, "El instructor es requerido para programar");
+        ValidadorArgumento.validarObligatorio(fecha, "La fecha es obligatoria para programar la clase");
+        ValidadorArgumento.validarObligatorio(hora, "La hora es obligatoria para programar la clase");
+
+        return new Programacion(idprogramacion, clase, aprendiz, instructor, fecha, hora, asistencia);
+    }
     public static Date validacionClasePractica(Date fecha, Long clase) {
         Calendar c = Calendar.getInstance();
         c.setTime(fecha);
