@@ -47,7 +47,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
                sonarqubeMasQualityGatesP(sonarKey:'sonar.projectKey=co.com.ceiba.adn:gooddrivingacademyadn-carolina.fonseca',
-               sonarName:'"GoodDrivingAcademyADN(carolina.fonseca)"',
+               sonarName:'"CeibaADN-GoodDrivingAcademy(carolina.fonseca)"',
                sonarPathProperties:'./sonar-project.properties')
       }
     }
