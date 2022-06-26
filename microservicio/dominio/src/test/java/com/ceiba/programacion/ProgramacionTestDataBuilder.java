@@ -1,4 +1,4 @@
-package com.ceiba.factura;
+package com.ceiba.programacion;
 
 import com.ceiba.programacion.modelo.entidad.Programacion;
 

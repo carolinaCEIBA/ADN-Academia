@@ -84,8 +84,6 @@ public class Programacion {
             Programacion.validarTeoria(contadorTeoria, categoria);
         } else if (clase == 2) {
             Programacion.validarPractica(contadorTeoria, contadorPractica, categoria);
-        } else if (clase == 3) {
-            //Programacion.validarPractica(contadorTeoria, contadorPractica, contadorRefuerzo, categoria);
         } else {
             System.out.println("No corresponde");
         }
@@ -144,13 +142,13 @@ public class Programacion {
 
     public static void verificacionPago(Double abono, Long clase, String categoria) {
         if (categoria.equals("B1")) {
-            if (clase == 1 && abono == 600000) {
+            if (clase == 1 && abono >= 600000) {
                 System.out.println("Puede continuar");
             } else if ((clase == 2 || clase == 3) && abono == 1200000) {
                 System.out.println("Puede continuar");
             }
         } else if (categoria.equals("C1")) {
-            if (clase == 1 && abono == 750000) {
+            if (clase == 1 && abono >= 750000) {
                 System.out.println("Puede continuar");
             } else if ((clase == 2 || clase == 3) && abono == 1500000) {
                 System.out.println("Puede continuar");

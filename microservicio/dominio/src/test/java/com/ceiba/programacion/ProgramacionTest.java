@@ -1,4 +1,4 @@
-package com.ceiba.factura;
+package com.ceiba.programacion;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -42,6 +42,7 @@ public class ProgramacionTest {
         Assertions.assertEquals(date, programacion.getFecha());
         Assertions.assertEquals("03:00 pm", programacion.getHora());
         Assertions.assertEquals("Si", programacion.getAsistencia());
+
 
     }
 
