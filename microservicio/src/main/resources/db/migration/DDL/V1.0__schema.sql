@@ -6,10 +6,9 @@ create table aprendiz (
  documento varchar(100) not null,
  eps varchar(100) not null,
  categoria varchar(100) not null,
- inasistencia int(10),
- valorcurso  double(16) not null,
- adicional  double(16) ,
- refuerzo int(11) ,
+ valorcurso  double not null,
+ abono  double not null,
+ adicional  double,
  primary key (id)
 );
 

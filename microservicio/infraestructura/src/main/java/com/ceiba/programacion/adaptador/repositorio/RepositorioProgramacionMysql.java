@@ -8,6 +8,10 @@ import com.ceiba.programacion.puerto.repositorio.RepositorioProgramacion;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 //
 @Repository
 public class RepositorioProgramacionMysql implements RepositorioProgramacion {
@@ -19,8 +23,24 @@ public class RepositorioProgramacionMysql implements RepositorioProgramacion {
     @SqlStatement(namespace = "programacion", value = "contadorteoria")
     private static String sqlContadorTeoria;
 
+    @SqlStatement(namespace = "programacion", value = "contadorpractica")
+    private static String sqlContadorPractica;
+
+    @SqlStatement(namespace = "programacion", value = "contadorrefuerzo")
+    private static String sqlContadorRefuerzo;
+
     @SqlStatement(namespace = "programacion", value = "obtenerprogramacionaprendiz")
     private static String sqlObtenerProgramacionAprendiz;
+
+    @SqlStatement(namespace = "programacion", value = "consultadisponibilidad")
+    private static String sqlDisponibilidad;
+
+    @SqlStatement(namespace = "programacion", value = "inasistenciateoria")
+    private static String sqlInasistenciaTeorica;
+
+    @SqlStatement(namespace = "programacion", value = "inasistenciapractica")
+    private static String sqlInasistenciaPractica;
+
     public RepositorioProgramacionMysql(MapeoProgramacion mapeoProgramacion, CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.mapeoProgramacion = mapeoProgramacion;
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -45,12 +65,61 @@ public class RepositorioProgramacionMysql implements RepositorioProgramacion {
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
                 .queryForObject(sqlObtenerProgramacionAprendiz, paramSource, new MapeoProgramacion()));
     }
-    @Override
-    public Long contadorteoria() {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("aprendiz", 2);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContadorTeoria, paramSource, Long.class);
 
+    @Override
+    public Long disponibilidad(Long id, Date fecha, String hora){
+        System.out.println("AQUI repositoriMysql");
+        LocalDate fechaConvertida = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        hora = "03:00 pm";
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("instructor", id);
+        paramSource.addValue("fecha", fechaConvertida);
+        paramSource.addValue("hora", hora);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDisponibilidad, paramSource, Long.class);
+    }
+
+    @Override
+    public Long inasistenciaTeorica(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("aprendiz", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlInasistenciaTeorica, paramSource, Long.class);
+    }
+
+    @Override
+    public Long inasistenciaPractica(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("aprendiz", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlInasistenciaPractica, paramSource, Long.class);
+    }
+
+    @Override
+    public Long contadorTeoria(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("aprendiz", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContadorTeoria, paramSource, Long.class);
+    }
+
+    @Override
+    public Long contadorPractica(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("aprendiz", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContadorPractica, paramSource, Long.class);
+
+    }
+
+    /**@Override
+    public Long contador(Long id, Long clase) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("aprendiz", id);
+        paramSource.addValue("clase", clase);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContadorGenerico, paramSource, Long.class);
+
+    }**/
+    @Override
+    public Long contadorRefuerzo(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("aprendiz", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContadorRefuerzo, paramSource, Long.class);
     }
 
 }

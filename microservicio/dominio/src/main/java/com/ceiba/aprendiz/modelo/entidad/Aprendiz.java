@@ -10,11 +10,10 @@ public class Aprendiz {
     private String documento;
     private String eps;
     private String categoria;
-    private Long inasistencia;
     private double valorcurso;
+    private double abono;
     private double adicional;
 
-    private Long refuerzo;
 
     public Long getId() {
         return id;
@@ -44,23 +43,17 @@ public class Aprendiz {
         return categoria;
     }
 
-    public Long getInasistencia() {
-        return inasistencia;
-    }
-
     public double getValorcurso() {
         return valorcurso;
     }
+
+    public double getAbono() { return abono; }
 
     public double getAdicional() {
         return adicional;
     }
 
-    public Long getRefuerzo() {
-        return refuerzo;
-    }
-
-    public Aprendiz(Long id, String nombre, String apellido, String tipodoc, String documento, String eps, String categoria, Long inasistencia, double valorcurso, double adicional, Long refuerzo) {
+    public Aprendiz(Long id, String nombre, String apellido, String tipodoc, String documento, String eps, String categoria, double valorcurso, double abono, double adicional) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -68,37 +61,47 @@ public class Aprendiz {
         this.documento = documento;
         this.eps = eps;
         this.categoria = categoria;
-        this.inasistencia = inasistencia;
         this.valorcurso = valorcurso;
+        this.abono = abono;
         this.adicional = adicional;
-        this.refuerzo = refuerzo;
 
     }
     public static Aprendiz crear(SolicitudRegistrarAp solicitudRegistrarAp) {
-        double adicional = Aprendiz.calculoRefuerzo(solicitudRegistrarAp.getRefuerzo(), solicitudRegistrarAp.getInasistencia());
         ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getNombre(), "El nombre del aprendiz es obligatorio para el registro");
         ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getDocumento(), "El ... del aprendiz es obligatorio para el registro");
-        return new Aprendiz(solicitudRegistrarAp.getId(), solicitudRegistrarAp.getNombre(), solicitudRegistrarAp.getApellido(), solicitudRegistrarAp.getTipodoc(), solicitudRegistrarAp.getDocumento(), solicitudRegistrarAp.getEps(), solicitudRegistrarAp.getCategoria(), solicitudRegistrarAp.getInasistencia(), solicitudRegistrarAp.getValorcurso(), adicional, solicitudRegistrarAp.getRefuerzo());
+        return new Aprendiz(solicitudRegistrarAp.getId(), solicitudRegistrarAp.getNombre(), solicitudRegistrarAp.getApellido(), solicitudRegistrarAp.getTipodoc(), solicitudRegistrarAp.getDocumento(), solicitudRegistrarAp.getEps(), solicitudRegistrarAp.getCategoria(), solicitudRegistrarAp.getValorcurso(), solicitudRegistrarAp.getAbono(), solicitudRegistrarAp.getAdicional());
     }
 
-    public static Aprendiz reconstruir(Long id, String nombre, String apellido, String tipodoc, String documento, String eps, String categoria, Long inasistencia, Double valorcurso, Double adicional, Long refuerzo) {
+    public static Aprendiz reconstruir(Long id, String nombre, String apellido, String tipodoc, String documento, String eps, String categoria, Double valorcurso, Double abono, Double adicional) {
         ValidadorArgumento.validarObligatorio(nombre, "El nombre del aprendiz es obligatorio para el registro");
         ValidadorArgumento.validarObligatorio(documento, "El ... del aprendiz es obligatorio para el registro");
 
-        return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, inasistencia, valorcurso, adicional, refuerzo);
+        return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }
-    public static Double calculoRefuerzo(Long refuerzo, Long inasistencia) {
+
+    public static Aprendiz guardarAdicional(SolicitudRegistrarAp solicitudRegistrarAp) {
+        //double adicional = Aprendiz.calculoRefuerzo(solicitudRegistrarAp.getRefuerzo(), solicitudRegistrarAp.getInasistencia());
+        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getNombre(), "El nombre del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getDocumento(), "El ... del aprendiz es obligatorio para el registro");
+        return new Aprendiz(solicitudRegistrarAp.getId(), solicitudRegistrarAp.getNombre(), solicitudRegistrarAp.getApellido(), solicitudRegistrarAp.getTipodoc(), solicitudRegistrarAp.getDocumento(), solicitudRegistrarAp.getEps(), solicitudRegistrarAp.getCategoria(), solicitudRegistrarAp.getValorcurso(), solicitudRegistrarAp.getAbono(), solicitudRegistrarAp.getAdicional());
+    }
+    public static Double calculoRefuerzo(Long refuerzo, Long inasistenciaTeorica, Long inasistenciaPractica) {
         double adicionalRefuerzo = 0;
-        double adicionalInasistencia = 0;
+        double adicionalInasistenciaTeoria = 0;
+        double adicionalInasistenciaPractica = 0;
         double adicional =0;
 
         if (refuerzo != null){
             adicionalRefuerzo = refuerzo * 25000;
-        } if (inasistencia != null){
-            adicionalInasistencia = inasistencia * 20000;
+        } if (inasistenciaTeorica != null){
+            adicionalInasistenciaTeoria = adicionalInasistenciaTeoria * 10000;
+        } if (inasistenciaPractica != null){
+            adicionalInasistenciaPractica = adicionalInasistenciaPractica * 20000;
+        } else {
+            throw new RuntimeException("Procedimiento incorrecto");
         }
 
-        adicional = adicionalRefuerzo + adicionalInasistencia;
+        adicional = adicionalRefuerzo + adicionalInasistenciaTeoria + adicionalInasistenciaPractica;
         return adicional;
     }
 

@@ -5,8 +5,11 @@ import com.ceiba.factura.comando.ComandoSolicitudProgramar;
 import com.ceiba.factura.comando.manejador.ManejadorProgramar;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/academia")
@@ -21,6 +24,8 @@ public class ComandoControladorProgramacion {
     @PostMapping("/programacion")
     @Operation(summary = "Programar", description = "Metodo utilizado para crear una programacón de una clase")
     public ComandoRespuesta<Long> programar(@RequestBody ComandoSolicitudProgramar comandoSolicitudProgramar){
+        System.out.println("ENTRA CONTROLADOR INICIAL");
+        System.out.println(comandoSolicitudProgramar.getFecha());
         return this.manejadorProgramar.ejecutar(comandoSolicitudProgramar);
     }
 }

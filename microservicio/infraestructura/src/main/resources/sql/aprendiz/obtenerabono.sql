@@ -1,0 +1,1 @@
+SELECT abono FROM aprendiz where id =:id;

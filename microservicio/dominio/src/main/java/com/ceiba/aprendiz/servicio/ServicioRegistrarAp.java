@@ -3,8 +3,6 @@ package com.ceiba.aprendiz.servicio;
 import com.ceiba.aprendiz.modelo.entidad.Aprendiz;
 import com.ceiba.aprendiz.modelo.entidad.SolicitudRegistrarAp;
 import com.ceiba.aprendiz.puerto.repositorio.RepositorioAprendiz;
-import com.ceiba.programacion.modelo.entidad.Programacion;
-import com.ceiba.programacion.modelo.entidad.SolicitudProgramar;
 
 public class ServicioRegistrarAp {
 

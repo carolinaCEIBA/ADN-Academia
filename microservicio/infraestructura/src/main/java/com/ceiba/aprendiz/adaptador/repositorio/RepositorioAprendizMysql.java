@@ -19,6 +19,9 @@ public class RepositorioAprendizMysql implements RepositorioAprendiz {
     @SqlStatement(namespace = "aprendiz", value = "obteneraprendiz")
     private static String sqlObtenerAprendiz;
 
+    @SqlStatement(namespace = "aprendiz", value = "obtenerabono")
+    private static String sqlObtenerAbono;
+
     public RepositorioAprendizMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -33,10 +36,9 @@ public class RepositorioAprendizMysql implements RepositorioAprendiz {
         paramSource.addValue("documento", aprendiz.getDocumento());
         paramSource.addValue("eps", aprendiz.getEps());
         paramSource.addValue("categoria", aprendiz.getCategoria());
-        paramSource.addValue("inasistencia", aprendiz.getInasistencia());
         paramSource.addValue("valorcurso", aprendiz.getValorcurso());
+        paramSource.addValue("abono", aprendiz.getAbono());
         paramSource.addValue("adicional", aprendiz.getAdicional());
-        paramSource.addValue("refuerzo", aprendiz.getRefuerzo());
         return this.customNamedParameterJdbcTemplate.crear(paramSource, sqlCrear);
 
     }
@@ -49,4 +51,11 @@ public class RepositorioAprendizMysql implements RepositorioAprendiz {
                 .queryForObject(sqlObtenerAprendiz, paramSource, new MapeoAprendiz()));
     }
 
+    @Override
+    public Double obtenerAbono(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+        return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
+                .queryForObject(sqlObtenerAbono, paramSource, Double.class));
+    }
 }

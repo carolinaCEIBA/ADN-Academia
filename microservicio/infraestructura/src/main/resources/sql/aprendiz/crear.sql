@@ -1,1 +1,1 @@
-insert into aprendiz(nombre, apellido, tipodoc, documento, eps, categoria, inasistencia, valorcurso, adicional, refuerzo ) values(:nombre, :apellido, :tipodoc, :documento, :eps, :categoria, :inasistencia, :valorcurso, :adicional, :refuerzo)
+insert into aprendiz(nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional) values(:nombre, :apellido, :tipodoc, :documento, :eps, :categoria, :valorcurso, :abono, :adicional)

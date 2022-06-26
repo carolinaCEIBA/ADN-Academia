@@ -22,3 +22,4 @@ public class ComandoSolicitudProgramar {
     private String asistencia;
 
 }
+

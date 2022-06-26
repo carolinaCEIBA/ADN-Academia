@@ -14,7 +14,7 @@ public class FabricaSolicitudRegistrarAp {
     }
     public SolicitudRegistrarAp crear(ComandoSolicitudRegistrarAp comandoSolicitudRegistrarAp) {
         return new SolicitudRegistrarAp(comandoSolicitudRegistrarAp.getId(), comandoSolicitudRegistrarAp.getNombre(), comandoSolicitudRegistrarAp.getApellido(), comandoSolicitudRegistrarAp.getTipodoc(), comandoSolicitudRegistrarAp.getDocumento(), comandoSolicitudRegistrarAp.getEps(),
-                comandoSolicitudRegistrarAp.getCategoria(), comandoSolicitudRegistrarAp.getInasistencia(), comandoSolicitudRegistrarAp.getValorcurso(), comandoSolicitudRegistrarAp.getAdicional(), comandoSolicitudRegistrarAp.getRefuerzo()
+                comandoSolicitudRegistrarAp.getCategoria(), comandoSolicitudRegistrarAp.getValorcurso(), comandoSolicitudRegistrarAp.getAbono(), comandoSolicitudRegistrarAp.getAdicional()
         );
     }
 }

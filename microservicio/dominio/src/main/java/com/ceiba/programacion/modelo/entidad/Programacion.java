@@ -3,7 +3,6 @@ package com.ceiba.programacion.modelo.entidad;
 import com.ceiba.dominio.ValidadorArgumento;
 import com.ceiba.programacion.puerto.repositorio.RepositorioProgramacion;
 
-import java.time.DayOfWeek;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -46,6 +45,7 @@ public class Programacion {
     }
 
     private RepositorioProgramacion repositorioProgramacion;
+
     public Programacion(Long idprogramacion, Long clase, Long aprendiz, Long instructor, Date fecha, String hora, String asistencia) {
         this.idprogramacion = idprogramacion;
         this.clase = clase;
@@ -57,7 +57,7 @@ public class Programacion {
     }
 
     public static Programacion crear(SolicitudProgramar solicitudProgramar) {
-        Date fechaHabil = Programacion.validacionClasePractica(solicitudProgramar.getFecha(), solicitudProgramar.getClase());
+        Date fechaHabil = Programacion.validacionFechaClasePractica(solicitudProgramar.getFecha(), solicitudProgramar.getClase());
         ValidadorArgumento.validarObligatorio(solicitudProgramar.getIdprogramacion(), "El id para la programación es obligatorio");
         ValidadorArgumento.validarObligatorio(solicitudProgramar.getClase(), "El tipo de clase es requerido para programar");
         ValidadorArgumento.validarObligatorio(solicitudProgramar.getAprendiz(), "El aprendiz es requerido para programar");
@@ -78,13 +78,76 @@ public class Programacion {
 
         return new Programacion(idprogramacion, clase, aprendiz, instructor, fecha, hora, asistencia);
     }
-    public static Date validacionClasePractica(Date fecha, Long clase) {
+
+    public static void orquestadorClase(Long contadorTeoria, Long contadorPractica, Long contadorRefuerzo, Long clase, String categoria) {
+        if (clase == 1) {
+            Programacion.validarTeoria(contadorTeoria, categoria);
+        } else if (clase == 2) {
+            Programacion.validarPractica(contadorTeoria, contadorPractica, categoria);
+        } else if (clase == 3) {
+            //Programacion.validarPractica(contadorTeoria, contadorPractica, contadorRefuerzo, categoria);
+        } else {
+            throw new RuntimeException("No corresponde");
+        }
+    }
+
+    public static void validarTeoria(Long contadorTeoria, String categoria) {
+        if (contadorTeoria == 0) {
+            System.out.println("Primer registro");
+        } else {
+            if (categoria.equals("B1") && (contadorTeoria < 25)) {
+            } else if (categoria.equals("C1") && (contadorTeoria < 30)) {
+            } else {
+                throw new RuntimeException("No puede agendar mas clases teoricas");
+            }
+        }
+
+    }
+
+    public static void validarPractica(Long contadorTeoria, Long contadorPractica, String categoria) {
+        if (contadorPractica == 0) {
+            System.out.println("Primer registro practico");
+        } else {
+            if (categoria.equals("B1") && contadorTeoria == 25 && contadorPractica < 25) {
+            } else if (categoria.equals("C1") && contadorTeoria == 30 && contadorPractica < 30) {
+            } else {
+                throw new RuntimeException("No puede agendar mas clases practicas");
+            }
+        }
+
+    }
+
+    public static Double calculoCostoAdicional(Long refuerzo, Long inasistencia) {
+        double adicionalRefuerzo = 0;
+        double adicionalInasistencia = 0;
+        double adicional = 0;
+
+        if (refuerzo != null) {
+            adicionalRefuerzo = refuerzo * 25000;
+        }
+        if (inasistencia != null) {
+            adicionalInasistencia = inasistencia * 20000;
+        }
+
+        adicional = adicionalRefuerzo + adicionalInasistencia;
+        return adicional;
+    }
+
+    public static void disponibilidadInstructor(Long disponibilidad) {
+        if (disponibilidad != 0) {
+            throw new RuntimeException("El instructor no tiene disponibilidad");
+        } else {
+            System.out.println("continuar");
+        }
+    }
+
+    public static Date validacionFechaClasePractica(Date fecha, Long clase) {
         Calendar c = Calendar.getInstance();
         c.setTime(fecha);
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
         Date fechaHabil = null;
-        if (clase == 2 || clase == 3){
-            if (!(dayOfWeek == 6 || dayOfWeek == 7)){
+        if (clase == 2 || clase == 3) {
+            if (!(dayOfWeek == 6 || dayOfWeek == 7)) {
                 fechaHabil = fecha;
             } else {
                 throw new RuntimeException("La clase no puede ser programada este dia");
@@ -95,4 +158,22 @@ public class Programacion {
         return fechaHabil;
     }
 
+    public static void verificacionPago(Double abono, Long clase, String categoria) {
+        if (categoria.equals("B1")) {
+            if (clase == 1 && abono == 600000) {
+                System.out.println("Puede continuar");
+            } else if ((clase == 2 || clase == 3) && abono == 1200000) {
+                System.out.println("Puede continuar");
+            }
+        } else if (categoria.equals("C1")) {
+            if (clase == 1 && abono == 750000) {
+                System.out.println("Puede continuar");
+            } else if ((clase == 2 || clase == 3) && abono == 1500000) {
+                System.out.println("Puede continuar");
+            } else {
+                throw new RuntimeException("El proceso no es valido");
+            }
+
+        }
+    }
 }

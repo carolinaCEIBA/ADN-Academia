@@ -20,12 +20,11 @@ public class MapeoAprendiz implements RowMapper<Aprendiz>, MapperResult {
         var documento = resultSet.getString("documento");
         var eps = resultSet.getString("eps");
         var categoria = resultSet.getString("categoria");
-        var inasistencia = resultSet.getLong("inasistencia");
         var valorcurso = resultSet.getDouble("valorcurso");
+        var abono = resultSet.getDouble("abono");
         var adicional = resultSet.getDouble("adicional");
-        var refuerzo = resultSet.getLong("refuerzo");
 
-        return Aprendiz.reconstruir(id, nombre, apellido, tipodoc, documento, eps, categoria, inasistencia, valorcurso, adicional, refuerzo);
+        return Aprendiz.reconstruir(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
 
     }
 

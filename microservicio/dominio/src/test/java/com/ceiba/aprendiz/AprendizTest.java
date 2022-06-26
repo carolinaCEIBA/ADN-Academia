@@ -24,10 +24,9 @@ public class AprendizTest {
             Assertions.assertEquals("1000791524", aprendiz.getDocumento());
             Assertions.assertEquals("Sanitas", aprendiz.getEps());
             Assertions.assertEquals("C1", aprendiz.getCategoria());
-            Assertions.assertEquals(1l, aprendiz.getInasistencia());
             Assertions.assertEquals(1450000, aprendiz.getValorcurso());
+            Assertions.assertEquals(750000, aprendiz.getAbono());
             Assertions.assertEquals(70000, aprendiz.getAdicional());
-            Assertions.assertEquals(2l, aprendiz.getRefuerzo());
         }
 
         @Test

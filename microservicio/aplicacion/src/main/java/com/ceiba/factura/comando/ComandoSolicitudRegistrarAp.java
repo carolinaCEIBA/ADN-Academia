@@ -17,9 +17,7 @@ public class ComandoSolicitudRegistrarAp {
     private String documento;
     private String eps;
     private String categoria;
-    private Long inasistencia;
     private double valorcurso;
+    private double abono;
     private double adicional;
-    private Long refuerzo;
-
 }

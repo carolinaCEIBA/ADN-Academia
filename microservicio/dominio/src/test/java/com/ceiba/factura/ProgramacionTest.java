@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class ProgramacionTest {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-    String dateInString = "2018-08-16";
+    String dateInString = "2018/08/16";
     Date date = formatter.parse(dateInString);
 
     public ProgramacionTest() throws ParseException {
