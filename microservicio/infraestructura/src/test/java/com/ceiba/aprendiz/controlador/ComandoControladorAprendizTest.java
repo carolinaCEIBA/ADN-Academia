@@ -54,10 +54,9 @@ class ComandoControladorAprendizTest {
         Assertions.assertEquals("1000791524", aprendizCreado.getDocumento());
         Assertions.assertEquals("Sanitas", aprendizCreado.getEps());
         Assertions.assertEquals("C1", aprendizCreado.getCategoria());
-        Assertions.assertEquals(1l, aprendizCreado.getInasistencia());
-        Assertions.assertEquals(1450000, aprendizCreado.getValorcurso());
+        Assertions.assertEquals(1500000, aprendizCreado.getValorcurso());
+        Assertions.assertEquals(1500000, aprendizCreado.getAbono());
         Assertions.assertEquals(70000, aprendizCreado.getAdicional());
-        Assertions.assertEquals(2l, aprendizCreado.getRefuerzo());
 
     }
 

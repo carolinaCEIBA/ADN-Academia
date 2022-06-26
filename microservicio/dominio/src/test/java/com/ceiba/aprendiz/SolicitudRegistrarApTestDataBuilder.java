@@ -11,11 +11,10 @@ public class SolicitudRegistrarApTestDataBuilder {
     private String documento;
     private String eps;
     private String categoria;
-    private Long inasistencia;
     private double valorcurso;
-    private double adicional;
-    private Long refuerzo;
 
+    private double abono;
+    private double adicional;
     public SolicitudRegistrarApTestDataBuilder conId(Long id){
         this.id = id;
         return this;
@@ -50,27 +49,21 @@ public class SolicitudRegistrarApTestDataBuilder {
         return this;
     }
 
-    public SolicitudRegistrarApTestDataBuilder conInasistencia(Long inasistencia){
-        this.inasistencia = inasistencia;
-        return this;
-    }
-
     public SolicitudRegistrarApTestDataBuilder conValorCurso(double valorcurso){
         this.valorcurso = valorcurso;
         return this;
     }
 
+    public SolicitudRegistrarApTestDataBuilder conAbono(double abono){
+        this.abono = abono;
+        return this;
+    }
     public SolicitudRegistrarApTestDataBuilder conAdicional(double adicional){
         this.adicional = adicional;
         return this;
     }
 
-    public SolicitudRegistrarApTestDataBuilder conRefuerzo(Long refuerzo){
-        this.refuerzo = refuerzo;
-        return this;
-    }
-
     public SolicitudRegistrarAp build() {
-        return new SolicitudRegistrarAp(id, nombre, apellido, tipodoc, documento, eps, categoria, inasistencia, valorcurso, adicional, refuerzo);
+        return new SolicitudRegistrarAp(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }
 }

@@ -68,9 +68,7 @@ public class RepositorioProgramacionMysql implements RepositorioProgramacion {
 
     @Override
     public Long disponibilidad(Long id, Date fecha, String hora){
-        System.out.println("AQUI repositoriMysql");
         LocalDate fechaConvertida = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        hora = "03:00 pm";
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("instructor", id);
         paramSource.addValue("fecha", fechaConvertida);

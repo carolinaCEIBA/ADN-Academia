@@ -10,23 +10,21 @@ public class AprendizTestDataBuilder {
     private String documento;
     private String eps;
     private String categoria;
-    private Long inasistencia;
     private double valorcurso;
+    private double abono;
     private double adicional;
-    private Long refuerzo;
 
     public AprendizTestDataBuilder conAprendizPorDefecto(){
-        this.id = 1L;
+        this.id = 5l;
         this.nombre = "Carolina";
         this.apellido = "Fonseca";
         this.tipodoc = "CC";
         this.documento = "1000791524";
         this.eps = "Sanitas";
         this.categoria = "C1";
-        this.inasistencia = 1L;
-        this.valorcurso = 1450000;
+        this.valorcurso = 1500000;
+        this.abono = 1500000;
         this.adicional = 70000;
-        this.refuerzo = 2L;
         return this;
     }
 
@@ -64,23 +62,17 @@ public class AprendizTestDataBuilder {
         return this;
     }
 
-    public AprendizTestDataBuilder conInasistencia(Long inasistencia){
-        this.inasistencia = inasistencia;
-        return this;
-    }
-
     public AprendizTestDataBuilder conValorCurso(double valorcurso){
         this.valorcurso = valorcurso;
         return this;
     }
 
-    public AprendizTestDataBuilder conAdicional(double adicional){
-        this.adicional = adicional;
+    public AprendizTestDataBuilder conAbono(double abono){
+        this.abono = abono;
         return this;
     }
-
-    public AprendizTestDataBuilder conRefuerzo(Long refuerzo){
-        this.refuerzo = refuerzo;
+    public AprendizTestDataBuilder conAdicional(double adicional){
+        this.adicional = adicional;
         return this;
     }
 
@@ -93,9 +85,8 @@ public class AprendizTestDataBuilder {
                 .conDocumento(documento)
                 .conEps(eps)
                 .conCategoria(categoria)
-                .conInasistencia(inasistencia)
                 .conValorCurso(valorcurso)
-                .conAdicional(adicional)
-                .conRefuerzo(refuerzo).build());
+                .conAbono(abono)
+                .conAdicional(adicional).build());
     }
 }

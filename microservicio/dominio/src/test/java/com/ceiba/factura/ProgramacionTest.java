@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class ProgramacionTest {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-    String dateInString = "2018/08/16";
+    String dateInString = "2018-08-16";
     Date date = formatter.parse(dateInString);
 
     public ProgramacionTest() throws ParseException {
@@ -19,11 +19,11 @@ public class ProgramacionTest {
     void deberiaCrearProgramacion(){
         Long idprogramacion = 1l;
         Long clase = 1l;
-        Long aprendiz = 1l;
+        Long aprendiz = 2l;
         Long instructor = 1l;
         Date fecha = date;
         String hora = "03:00 pm";
-        String asistencia = "Completa";
+        String asistencia = "Si";
 
 
         var programacion = new ProgramacionTestDataBuilder()
@@ -37,11 +37,11 @@ public class ProgramacionTest {
 
         Assertions.assertEquals(1l, programacion.getIdprogramacion());
         Assertions.assertEquals(1l, programacion.getClase());
-        Assertions.assertEquals(1l, programacion.getAprendiz());
+        Assertions.assertEquals(2l, programacion.getAprendiz());
         Assertions.assertEquals(1l, programacion.getInstructor());
         Assertions.assertEquals(date, programacion.getFecha());
         Assertions.assertEquals("03:00 pm", programacion.getHora());
-        Assertions.assertEquals("Completa", programacion.getAsistencia());
+        Assertions.assertEquals("Si", programacion.getAsistencia());
 
     }
 

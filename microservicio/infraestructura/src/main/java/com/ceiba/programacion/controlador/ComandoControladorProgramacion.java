@@ -24,8 +24,6 @@ public class ComandoControladorProgramacion {
     @PostMapping("/programacion")
     @Operation(summary = "Programar", description = "Metodo utilizado para crear una programacón de una clase")
     public ComandoRespuesta<Long> programar(@RequestBody ComandoSolicitudProgramar comandoSolicitudProgramar){
-        System.out.println("ENTRA CONTROLADOR INICIAL");
-        System.out.println(comandoSolicitudProgramar.getFecha());
         return this.manejadorProgramar.ejecutar(comandoSolicitudProgramar);
     }
 }

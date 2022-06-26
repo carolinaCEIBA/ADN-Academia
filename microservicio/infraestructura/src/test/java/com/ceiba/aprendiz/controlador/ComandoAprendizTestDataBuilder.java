@@ -11,10 +11,10 @@ public class ComandoAprendizTestDataBuilder {
     private String documento;
     private String eps;
     private String categoria;
-    private Long inasistencia;
     private double valorcurso;
+    private double abono;
+
     private double adicional;
-    private Long refuerzo;
 
     public ComandoAprendizTestDataBuilder aprendizPorDefecto(){
         this.id = 3l;
@@ -24,14 +24,13 @@ public class ComandoAprendizTestDataBuilder {
         this.documento = "1000791524";
         this.eps = "Sanitas";
         this.categoria = "C1";
-        this.inasistencia = 1l;
-        this.valorcurso = 1450000;
-        this.adicional = 0;
-        this.refuerzo = 2l;
+        this.valorcurso = 1500000;
+        this.abono = 1500000;
+        this.adicional = 70000;
         return this;
     }
 
     public ComandoSolicitudRegistrarAp build() {
-        return new ComandoSolicitudRegistrarAp(this.id, this.nombre, this.apellido, this.tipodoc, this.documento, this.eps, this.categoria, this.inasistencia, this.valorcurso, this.adicional, this.refuerzo);
+        return new ComandoSolicitudRegistrarAp(this.id, this.nombre, this.apellido, this.tipodoc, this.documento, this.eps, this.categoria, this.valorcurso, this.abono, this.adicional);
     }
 }
