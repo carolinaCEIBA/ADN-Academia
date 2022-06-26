@@ -91,12 +91,12 @@ public class Aprendiz {
 
         if (refuerzo != null){
             adicionalRefuerzo = refuerzo * ConstantesAprendiz.REFUERZO;
-        } if (inasistenciaTeorica != null){
+        } else if (inasistenciaTeorica != null){
             adicionalInasistenciaTeoria = adicionalInasistenciaTeoria * ConstantesAprendiz.INASISTENCIATEORICA;
-        } if (inasistenciaPractica != null){
+        } else if (inasistenciaPractica != null){
             adicionalInasistenciaPractica = adicionalInasistenciaPractica * ConstantesAprendiz.INASISTENCIAPRACTICA;
         } else {
-            throw new RuntimeException("Procedimiento incorrecto");
+            System.out.println("Procedimiento incorrecto");
         }
 
         adicional = adicionalRefuerzo + adicionalInasistenciaTeoria + adicionalInasistenciaPractica;
