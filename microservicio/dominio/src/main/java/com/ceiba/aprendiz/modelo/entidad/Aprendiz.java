@@ -1,6 +1,7 @@
 package com.ceiba.aprendiz.modelo.entidad;
 
 import com.ceiba.dominio.ValidadorArgumento;
+import com.ceiba.programacion.modelo.entidad.Programacion;
 
 public class Aprendiz {
     private Long id;
@@ -79,24 +80,21 @@ public class Aprendiz {
         return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }
 
-    public static Aprendiz guardarAdicional(SolicitudRegistrarAp solicitudRegistrarAp) {
-        //double adicional = Aprendiz.calculoRefuerzo(solicitudRegistrarAp.getRefuerzo(), solicitudRegistrarAp.getInasistencia());
-        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getNombre(), "El nombre del aprendiz es obligatorio para el registro");
-        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getDocumento(), "El ... del aprendiz es obligatorio para el registro");
-        return new Aprendiz(solicitudRegistrarAp.getId(), solicitudRegistrarAp.getNombre(), solicitudRegistrarAp.getApellido(), solicitudRegistrarAp.getTipodoc(), solicitudRegistrarAp.getDocumento(), solicitudRegistrarAp.getEps(), solicitudRegistrarAp.getCategoria(), solicitudRegistrarAp.getValorcurso(), solicitudRegistrarAp.getAbono(), solicitudRegistrarAp.getAdicional());
+    public static Double guardarAdicional(Long aprendiz, Double adicional) {
+        return adicional;
     }
-    public static Double calculoRefuerzo(Long refuerzo, Long inasistenciaTeorica, Long inasistenciaPractica) {
+    public static Double calculoAdicional(Long refuerzo, Long inasistenciaTeorica, Long inasistenciaPractica) {
         double adicionalRefuerzo = 0;
         double adicionalInasistenciaTeoria = 0;
         double adicionalInasistenciaPractica = 0;
         double adicional =0;
 
         if (refuerzo != null){
-            adicionalRefuerzo = refuerzo * 25000;
+            adicionalRefuerzo = refuerzo * ConstantesAprendiz.REFUERZO;
         } if (inasistenciaTeorica != null){
-            adicionalInasistenciaTeoria = adicionalInasistenciaTeoria * 10000;
+            adicionalInasistenciaTeoria = adicionalInasistenciaTeoria * ConstantesAprendiz.INASISTENCIATEORICA;
         } if (inasistenciaPractica != null){
-            adicionalInasistenciaPractica = adicionalInasistenciaPractica * 20000;
+            adicionalInasistenciaPractica = adicionalInasistenciaPractica * ConstantesAprendiz.INASISTENCIAPRACTICA;
         } else {
             throw new RuntimeException("Procedimiento incorrecto");
         }
