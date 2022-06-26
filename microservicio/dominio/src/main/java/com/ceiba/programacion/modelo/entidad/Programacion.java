@@ -107,7 +107,7 @@ public class Programacion {
     public static void validarPractica(Long contadorTeoria, Long contadorPractica, String categoria) {
         if (contadorPractica == 0) {
             System.out.println("Primer registro practico");
-        } else if (contadorPractica != 0){
+        } else if (contadorPractica >=1){
             if (categoria.equals("B1") && contadorTeoria == 25 && contadorPractica < 25) {
             } else if (categoria.equals("C1") && contadorTeoria == 30 && contadorPractica < 30) {
             }
@@ -115,22 +115,6 @@ public class Programacion {
             System.out.println("No puede agendar mas clases practicas");
         }
 
-    }
-
-    public static Double calculoCostoAdicional(Long refuerzo, Long inasistencia) {
-        double adicionalRefuerzo = 0;
-        double adicionalInasistencia = 0;
-        double adicional = 0;
-
-        if (refuerzo != null) {
-            adicionalRefuerzo = refuerzo * 25000;
-        }
-        if (inasistencia != null) {
-            adicionalInasistencia = inasistencia * 20000;
-        }
-
-        adicional = adicionalRefuerzo + adicionalInasistencia;
-        return adicional;
     }
 
     public static void disponibilidadInstructor(Long disponibilidad) {
