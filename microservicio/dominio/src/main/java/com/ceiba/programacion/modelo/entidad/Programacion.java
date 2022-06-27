@@ -76,7 +76,6 @@ public class Programacion {
 
     public static void validarTeoria(Long contadorTeoria, String categoria) {
         if (contadorTeoria == 0) {
-            System.out.println("Primer registro");
         } else {
             if (categoria.equals(ConstantesProgramacion.B1) && (contadorTeoria < 25)) {
             } else if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
@@ -88,7 +87,6 @@ public class Programacion {
 
     public static void validarPractica(Long contadorTeoria, Long contadorPractica, String categoria) {
         if (contadorPractica == 0) {
-            System.out.println("Primer registro practico");
         } else if (contadorPractica >=1){
             if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25) {
                 } else if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30) {
@@ -127,15 +125,11 @@ public class Programacion {
     public static void verificacionPago(Double abono, Long clase, String categoria) {
         if (categoria.equals(ConstantesProgramacion.B1)) {
             if (clase == 1 && abono >= 600000) {
-                System.out.println("Puede continuar");
             } else if ((clase == 2 || clase == 3) && abono == 1200000) {
-                System.out.println("Puede continuar");
             }
         } else if (categoria.equals(ConstantesProgramacion.C1)) {
             if (clase == 1 && abono >= 750000) {
-                System.out.println("Puede continuar");
             } else if ((clase == 2 || clase == 3) && abono == 1500000) {
-                System.out.println("Puede continuar");
             } else {
                 System.out.println("El proceso no es valido");
             }

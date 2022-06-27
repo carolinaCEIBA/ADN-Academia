@@ -17,7 +17,11 @@ import java.util.Date;
 public class ProgramacionTest {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     String dateInString = "2018-08-16";
+    String dateInString2 = "2018-08-18";
+
     Date date = formatter.parse(dateInString);
+    Date date2 = formatter.parse(dateInString2);
+
 
     public ProgramacionTest() throws ParseException {
     }
@@ -170,5 +174,16 @@ public class ProgramacionTest {
         void deberiaValidarSaldoCaso4() {
             Programacion.verificacionPago(1500000.0, 2l, "C1");
         }
+
+        @Test
+        void deberiaValidarFechaCaso1() {
+            Programacion.validacionFechaClasePractica(date, 2l);
+        }
+
+        @Test
+        void deberiaValidarFechaCaso2() {
+            Programacion.validacionFechaClasePractica(date2, 2l);
+        }
+
 
 }

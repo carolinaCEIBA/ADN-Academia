@@ -1,8 +1,10 @@
 package com.ceiba.aprendiz;
 
 import com.ceiba.BasePrueba;
+import com.ceiba.aprendiz.modelo.entidad.Aprendiz;
 import com.ceiba.dominio.ValidadorArgumento;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.programacion.modelo.entidad.Programacion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.matchers.Null;
@@ -198,6 +200,17 @@ public class AprendizTest {
                     ExcepcionValorObligatorio.class,
                     "La categoria es obligatoria para el registro");
         }
+
+        @Test
+        void deberiaCalcularAdicionalCaso1() {
+            Aprendiz.calculoAdicional(2l, 1l, 2l);
+        }
+
+        @Test
+        void deberiaCalcularAdicionalCaso2() {
+            Aprendiz.calculoAdicional(null, null, null);
+        }
+
 
 }
 
