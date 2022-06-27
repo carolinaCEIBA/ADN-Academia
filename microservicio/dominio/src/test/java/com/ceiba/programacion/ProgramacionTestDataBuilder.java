@@ -1,5 +1,6 @@
 package com.ceiba.programacion;
 
+import com.ceiba.programacion.modelo.entidad.ConstantesProgramacion;
 import com.ceiba.programacion.modelo.entidad.Programacion;
 
 import java.text.ParseException;
@@ -15,6 +16,7 @@ public class ProgramacionTestDataBuilder {
     private Date fecha;
     private String hora;
     private String asistencia;
+
 
     public ProgramacionTestDataBuilder conProgramacionPorDefecto() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat();

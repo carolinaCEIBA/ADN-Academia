@@ -28,7 +28,7 @@ public class ServicioProgramar {
         var abono = repositorioAprendiz.obtenerAbono(solicitudProgramar.getAprendiz());
         var aprendiz = repositorioAprendiz.obtener(solicitudProgramar.getAprendiz());
         var adicional = Aprendiz.calculoAdicional(contadorRefuerzo, inasistenciaTeorica, inasistenciaPractica);
-        Programacion.orquestadorClase(contadorTeoria, contadorPractica, contadorRefuerzo, aprendiz.getCategoria());
+        Programacion.orquestadorClase(contadorTeoria, contadorPractica, solicitudProgramar.getClase(), aprendiz.getCategoria());
         Programacion.disponibilidadInstructor(disponibilidad);
         Programacion.verificacionPago(abono, solicitudProgramar.getClase(), aprendiz.getCategoria());
         Aprendiz.guardarAdicional(solicitudProgramar.getAprendiz(), adicional);
