@@ -1,7 +1,6 @@
 package com.ceiba.aprendiz.modelo.entidad;
 
 import com.ceiba.dominio.ValidadorArgumento;
-import com.ceiba.programacion.modelo.entidad.Programacion;
 
 public class Aprendiz {
     private Long id;

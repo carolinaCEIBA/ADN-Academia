@@ -1,8 +1,7 @@
 package com.ceiba.programacion.modelo.entidad;
 
-import com.ceiba.dominio.ValidadorArgumento;
-import com.ceiba.programacion.puerto.repositorio.RepositorioProgramacion;
 
+import java.time.DayOfWeek;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -77,8 +76,10 @@ public class Programacion {
     public static void validarTeoria(Long contadorTeoria, String categoria) {
         if (contadorTeoria == 0) {
         } else {
-            if (categoria.equals(ConstantesProgramacion.B1) && (contadorTeoria < 25))
-            if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
+            if (categoria.equals(ConstantesProgramacion.B1) && (contadorTeoria < 25)) {
+
+            }
+            else if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
             } else {
                 System.out.println("No puede agendar mas clases teoricas");
             }
@@ -96,10 +97,8 @@ public class Programacion {
     }
 
     public static void disponibilidadInstructor(Long disponibilidad) {
-        if (disponibilidad != 0) {
+        if (disponibilidad != 0){
             System.out.println("instructor no tiene disponibilidad");
-        } else {
-            System.out.println("continuar");
         }
     }
 
@@ -108,28 +107,31 @@ public class Programacion {
         c.setTime(fecha);
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
         Date fechaHabil = null;
-        if (clase == 2 || clase == 3) {
-            if (!(dayOfWeek == 6 || dayOfWeek == 7)) {
-                fechaHabil = fecha;
-            } else {
-                fechaHabil = fecha;
-                System.out.println("La clase no puede ser programada este dia");
-            }
-        } else if (clase == 1) {
+        if (clase == 1) {
             fechaHabil = fecha;
+        } else if (clase == 2 || clase == 3) {
+            if (!(dayOfWeek == 7 || dayOfWeek == 1))
+                fechaHabil = fecha;
+
+        } else {
+            System.out.println("La clase no puede ser programada este dia");
         }
         return fechaHabil;
     }
 
     public static void verificacionPago(Double abono, Long clase, String categoria) {
         if (categoria.equals(ConstantesProgramacion.B1)) {
-            if (clase == 1 && abono >= 600000)
-                if ((clase == 2 || clase == 3) && abono == 1200000) ;
+                if (clase == 1 && abono >= 600000){
+                } else if ((clase == 2 || clase == 3) && abono == 1200000) {
+                } else {
+                    System.out.println("Debe cancelar el valor requerido");
+                }
             } else if (categoria.equals(ConstantesProgramacion.C1)) {
-                if (clase == 1 && abono >= 750000)
-                    if ((clase == 2 || clase == 3) && abono == 1500000);
-            } else {
-                System.out.println("El proceso no es valido");
+                if (clase == 1 && abono >= 750000){
+                } else if ((clase == 2 || clase == 3) && abono == 1500000){
+                } else {
+                    System.out.println("Debe cancelar el valor requerido");
+                }
             }
         }
     }

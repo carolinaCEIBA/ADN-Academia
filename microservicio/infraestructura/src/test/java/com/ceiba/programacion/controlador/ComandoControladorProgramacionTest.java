@@ -1,11 +1,20 @@
 package com.ceiba.programacion.controlador;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.aprendiz.controlador.ComandoAprendizTestDataBuilder;
+import com.ceiba.aprendiz.modelo.entidad.Aprendiz;
+import com.ceiba.aprendiz.puerto.repositorio.RepositorioAprendiz;
+import com.ceiba.factura.comando.ComandoSolicitudRegistrarAp;
+import com.ceiba.programacion.modelo.entidad.Programacion;
 import com.ceiba.programacion.puerto.repositorio.RepositorioProgramacion;
+import com.ceiba.programacion.servicio.ServicioProgramar;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.source.tree.ModuleTree;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -35,6 +44,8 @@ class ComandoControladorProgramacionTest {
 
     @Autowired
     private RepositorioProgramacion repositorioProgramacion;
+    @Autowired
+    private RepositorioAprendiz repositorioAprendiz;
 
     @Test
     void crearProgramacionExitosa() throws Exception{
@@ -44,7 +55,14 @@ class ComandoControladorProgramacionTest {
                 .content(objectMapper.writeValueAsString(comandoProgramarTestDataBuilder)))
                 .andExpect(status().is2xxSuccessful()).andReturn();
         String jsonResult = resultado.getResponse().getContentAsString();
+
         var respuesta = objectMapper.readValue(jsonResult, RespuestaProgramar.class);
+
+        Programacion.orquestadorClase(2l, null, 1l, "C1");
+        Programacion.disponibilidadInstructor(0l);
+        Programacion.verificacionPago(750000.0, 1l, "C1");
+        Aprendiz.guardarAdicional(1l, 20000.0);
+
         var programacionGuardada = repositorioProgramacion.obtener(respuesta.getValor());
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
