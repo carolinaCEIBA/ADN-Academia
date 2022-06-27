@@ -79,4 +79,127 @@ public class ProgramacionTest {
 
         }
 
+        @Test
+        void deberiaCrearProgramacionCaso2(){
+            Long idprogramacion = 1l;
+            Long clase = 2l;
+            Long aprendiz = 2l;
+            Long instructor = 1l;
+            Date fecha = date;
+            String hora = "03:00 pm";
+            String asistencia = "Si";
+
+
+            var programacion = new ProgramacionTestDataBuilder()
+                    .conIdprogramacion(idprogramacion)
+                    .conClase(clase)
+                    .conAprendiz(aprendiz)
+                    .conInstructor(instructor)
+                    .conFecha(fecha)
+                    .conHora(hora)
+                    .conAsistencia(asistencia).crear();
+
+            Assertions.assertEquals(1l, programacion.getIdprogramacion());
+            Assertions.assertEquals(2l, programacion.getClase());
+            Assertions.assertEquals(2l, programacion.getAprendiz());
+            Assertions.assertEquals(1l, programacion.getInstructor());
+            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals("03:00 pm", programacion.getHora());
+            Assertions.assertEquals("Si", programacion.getAsistencia());
+
+
+        }
+
+        @Test
+        void deberiaCrearProgramacionCaso3(){
+            Long idprogramacion = 1l;
+            Long clase = 3l;
+            Long aprendiz = 2l;
+            Long instructor = 1l;
+            Date fecha = date;
+            String hora = "03:00 pm";
+            String asistencia = "Si";
+
+
+            var programacion = new ProgramacionTestDataBuilder()
+                    .conIdprogramacion(idprogramacion)
+                    .conClase(clase)
+                    .conAprendiz(aprendiz)
+                    .conInstructor(instructor)
+                    .conFecha(fecha)
+                    .conHora(hora)
+                    .conAsistencia(asistencia).crear();
+
+            Assertions.assertEquals(1l, programacion.getIdprogramacion());
+            Assertions.assertEquals(3l, programacion.getClase());
+            Assertions.assertEquals(2l, programacion.getAprendiz());
+            Assertions.assertEquals(1l, programacion.getInstructor());
+            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals("03:00 pm", programacion.getHora());
+            Assertions.assertEquals("Si", programacion.getAsistencia());
+
+        }
+
+        @Test
+        void deberiaCrearProgramacionAsistenciaCaso1(){
+            Long idprogramacion = 1l;
+            Long clase = 2l;
+            Long aprendiz = 2l;
+            Long instructor = 1l;
+            Date fecha = date;
+            String hora = "04:00 pm";
+            String asistencia = "Si";
+
+
+            var programacion = new ProgramacionTestDataBuilder()
+                    .conIdprogramacion(idprogramacion)
+                    .conClase(clase)
+                    .conAprendiz(aprendiz)
+                    .conInstructor(instructor)
+                    .conFecha(fecha)
+                    .conHora(hora)
+                    .conAsistencia(asistencia).crear();
+
+            Assertions.assertEquals(1l, programacion.getIdprogramacion());
+            Assertions.assertEquals(2l, programacion.getClase());
+            Assertions.assertEquals(2l, programacion.getAprendiz());
+            Assertions.assertEquals(1l, programacion.getInstructor());
+            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals("03:00 pm", programacion.getHora());
+            Assertions.assertEquals("Si", programacion.getAsistencia());
+
+
+        }
+
+        @Test
+        void deberiaCrearProgramacionAsistenciaCaso2(){
+            Long idprogramacion = 1l;
+            Long clase = 2l;
+            Long aprendiz = 2l;
+            Long instructor = 1l;
+            Date fecha = date;
+            String hora = "04:00 pm";
+            String asistencia = "No";
+
+
+            var programacion = new ProgramacionTestDataBuilder()
+                    .conIdprogramacion(idprogramacion)
+                    .conClase(clase)
+                    .conAprendiz(aprendiz)
+                    .conInstructor(instructor)
+                    .conFecha(fecha)
+                    .conHora(hora)
+                    .conAsistencia(asistencia).crear();
+
+            Assertions.assertEquals(1l, programacion.getIdprogramacion());
+            Assertions.assertEquals(2l, programacion.getClase());
+            Assertions.assertEquals(2l, programacion.getAprendiz());
+            Assertions.assertEquals(1l, programacion.getInstructor());
+            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals("04:00 pm", programacion.getHora());
+            Assertions.assertEquals("No", programacion.getAsistencia());
+
+
+        }
+
 }
