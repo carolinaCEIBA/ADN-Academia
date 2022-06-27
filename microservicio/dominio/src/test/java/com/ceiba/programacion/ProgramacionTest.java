@@ -165,7 +165,7 @@ public class ProgramacionTest {
             Assertions.assertEquals(2l, programacion.getAprendiz());
             Assertions.assertEquals(1l, programacion.getInstructor());
             Assertions.assertEquals(date, programacion.getFecha());
-            Assertions.assertEquals("03:00 pm", programacion.getHora());
+            Assertions.assertEquals("04:00 pm", programacion.getHora());
             Assertions.assertEquals("Si", programacion.getAsistencia());
 
 
