@@ -77,23 +77,22 @@ public class Programacion {
     public static void validarTeoria(Long contadorTeoria, String categoria) {
         if (contadorTeoria == 0) {
         } else {
-            if (categoria.equals(ConstantesProgramacion.B1) && (contadorTeoria < 25)) {
-            } else if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
-                } else {
+            if (categoria.equals(ConstantesProgramacion.B1) && (contadorTeoria < 25))
+            if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
+            } else {
                 System.out.println("No puede agendar mas clases teoricas");
-                }
             }
         }
+    }
 
     public static void validarPractica(Long contadorTeoria, Long contadorPractica, String categoria) {
-        if (contadorPractica == 0)
-            if (contadorPractica >=1){
-            if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25);
-            if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30);
+        if (contadorPractica == 0) {
+        } else if (contadorPractica >= 1) {
+            if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25)
+                if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30) ;
         } else {
             System.out.println("No puede agendar mas clases practicas");
         }
-
     }
 
     public static void disponibilidadInstructor(Long disponibilidad) {
@@ -121,18 +120,16 @@ public class Programacion {
         }
         return fechaHabil;
     }
+
     public static void verificacionPago(Double abono, Long clase, String categoria) {
         if (categoria.equals(ConstantesProgramacion.B1)) {
-            if (clase == 1 && abono >= 600000) {
-            } else if ((clase == 2 || clase == 3) && abono == 1200000) {
-            }
-        } else if (categoria.equals(ConstantesProgramacion.C1)) {
-            if (clase == 1 && abono >= 750000) {
-            } else if ((clase == 2 || clase == 3) && abono == 1500000) {
+            if (clase == 1 && abono >= 600000)
+                if ((clase == 2 || clase == 3) && abono == 1200000) ;
+            } else if (categoria.equals(ConstantesProgramacion.C1)) {
+                if (clase == 1 && abono >= 750000)
+                    if ((clase == 2 || clase == 3) && abono == 1500000);
             } else {
                 System.out.println("El proceso no es valido");
             }
-
         }
     }
-}
