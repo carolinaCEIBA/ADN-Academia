@@ -2,7 +2,6 @@ package com.ceiba.programacion.puerto.repositorio;
 
 import com.ceiba.programacion.modelo.entidad.Programacion;
 
-import java.text.ParseException;
 import java.util.Date;
 
 public interface RepositorioProgramacion {

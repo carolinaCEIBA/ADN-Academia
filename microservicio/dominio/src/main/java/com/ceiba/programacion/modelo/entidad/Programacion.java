@@ -86,11 +86,10 @@ public class Programacion {
         }
 
     public static void validarPractica(Long contadorTeoria, Long contadorPractica, String categoria) {
-        if (contadorPractica == 0) {
-        } else if (contadorPractica >=1){
-            if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25) {
-                } else if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30) {
-                }
+        if (contadorPractica == 0)
+            if (contadorPractica >=1){
+            if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25);
+            if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30);
         } else {
             System.out.println("No puede agendar mas clases practicas");
         }
