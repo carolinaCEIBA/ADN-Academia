@@ -22,9 +22,9 @@ public class AprendizTestDataBuilder {
         this.documento = "1000791524";
         this.eps = "Sanitas";
         this.categoria = "C1";
-        this.valorcurso = 1500000;
-        this.abono = 1500000;
-        this.adicional = 70000;
+        this.valorcurso = 1500000.0;
+        this.abono = 1500000.0;
+        this.adicional = 70000.0;
         return this;
     }
 
@@ -88,5 +88,9 @@ public class AprendizTestDataBuilder {
                 .conValorCurso(valorcurso)
                 .conAbono(abono)
                 .conAdicional(adicional).build());
+    }
+
+    public Aprendiz reconstruir() {
+        return Aprendiz.reconstruir(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }
 }

@@ -69,13 +69,19 @@ public class Aprendiz {
     }
     public static Aprendiz crear(SolicitudRegistrarAp solicitudRegistrarAp) {
         ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getNombre(), "El nombre del aprendiz es obligatorio para el registro");
-        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getDocumento(), "El ... del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getApellido(), "El apellido del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getTipodoc(), "El tipo de documento del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getDocumento(), "El documento del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(solicitudRegistrarAp.getCategoria(), "La categoria es obligatoria para el registro");
         return new Aprendiz(solicitudRegistrarAp.getId(), solicitudRegistrarAp.getNombre(), solicitudRegistrarAp.getApellido(), solicitudRegistrarAp.getTipodoc(), solicitudRegistrarAp.getDocumento(), solicitudRegistrarAp.getEps(), solicitudRegistrarAp.getCategoria(), solicitudRegistrarAp.getValorcurso(), solicitudRegistrarAp.getAbono(), solicitudRegistrarAp.getAdicional());
     }
 
     public static Aprendiz reconstruir(Long id, String nombre, String apellido, String tipodoc, String documento, String eps, String categoria, Double valorcurso, Double abono, Double adicional) {
         ValidadorArgumento.validarObligatorio(nombre, "El nombre del aprendiz es obligatorio para el registro");
-        ValidadorArgumento.validarObligatorio(documento, "El ... del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(apellido, "El apellido del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(tipodoc, "El tipo de documento del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(documento, "El documento del aprendiz es obligatorio para el registro");
+        ValidadorArgumento.validarObligatorio(categoria, "La categoria es obligatoria para el registro");
 
         return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }

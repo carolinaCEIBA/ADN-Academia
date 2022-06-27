@@ -75,5 +75,7 @@ public class ProgramacionTestDataBuilder {
                 .build());
     }
 
-
+    public Programacion reconstruir() {
+        return Programacion.reconstruir(idprogramacion, clase, aprendiz, instructor, fecha, hora, asistencia);
+    }
 }

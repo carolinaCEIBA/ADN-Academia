@@ -1,5 +1,8 @@
 package com.ceiba.programacion;
 
+import com.ceiba.BasePrueba;
+import com.ceiba.aprendiz.AprendizTestDataBuilder;
+import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,35 +18,65 @@ public class ProgramacionTest {
     public ProgramacionTest() throws ParseException {
     }
 
-    @Test
-    void deberiaCrearProgramacion(){
-        Long idprogramacion = 1l;
-        Long clase = 1l;
-        Long aprendiz = 2l;
-        Long instructor = 1l;
-        Date fecha = date;
-        String hora = "03:00 pm";
-        String asistencia = "Si";
+        @Test
+        void deberiaCrearProgramacion(){
+            Long idprogramacion = 1l;
+            Long clase = 1l;
+            Long aprendiz = 2l;
+            Long instructor = 1l;
+            Date fecha = date;
+            String hora = "03:00 pm";
+            String asistencia = "Si";
 
 
-        var programacion = new ProgramacionTestDataBuilder()
-                .conIdprogramacion(idprogramacion)
-                .conClase(clase)
-                .conAprendiz(aprendiz)
-                .conInstructor(instructor)
-                .conFecha(fecha)
-                .conHora(hora)
-                .conAsistencia(asistencia).crear();
+            var programacion = new ProgramacionTestDataBuilder()
+                    .conIdprogramacion(idprogramacion)
+                    .conClase(clase)
+                    .conAprendiz(aprendiz)
+                    .conInstructor(instructor)
+                    .conFecha(fecha)
+                    .conHora(hora)
+                    .conAsistencia(asistencia).crear();
 
-        Assertions.assertEquals(1l, programacion.getIdprogramacion());
-        Assertions.assertEquals(1l, programacion.getClase());
-        Assertions.assertEquals(2l, programacion.getAprendiz());
-        Assertions.assertEquals(1l, programacion.getInstructor());
-        Assertions.assertEquals(date, programacion.getFecha());
-        Assertions.assertEquals("03:00 pm", programacion.getHora());
-        Assertions.assertEquals("Si", programacion.getAsistencia());
+            Assertions.assertEquals(1l, programacion.getIdprogramacion());
+            Assertions.assertEquals(1l, programacion.getClase());
+            Assertions.assertEquals(2l, programacion.getAprendiz());
+            Assertions.assertEquals(1l, programacion.getInstructor());
+            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals("03:00 pm", programacion.getHora());
+            Assertions.assertEquals("Si", programacion.getAsistencia());
 
 
-    }
+        }
+
+        @Test
+        void deberiarReconstruirProgramacion(){
+            Long idprogramacion = 1l;
+            Long clase = 1l;
+            Long aprendiz = 2l;
+            Long instructor = 1l;
+            Date fecha = date;
+            String hora = "03:00 pm";
+            String asistencia = "Si";
+
+
+            var programacion = new ProgramacionTestDataBuilder()
+                    .conIdprogramacion(idprogramacion)
+                    .conClase(clase)
+                    .conAprendiz(aprendiz)
+                    .conInstructor(instructor)
+                    .conFecha(fecha)
+                    .conHora(hora)
+                    .conAsistencia(asistencia).reconstruir();
+
+            Assertions.assertEquals(1l, programacion.getIdprogramacion());
+            Assertions.assertEquals(1l, programacion.getClase());
+            Assertions.assertEquals(2l, programacion.getAprendiz());
+            Assertions.assertEquals(1l, programacion.getInstructor());
+            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals("03:00 pm", programacion.getHora());
+            Assertions.assertEquals("Si", programacion.getAsistencia());
+
+        }
 
 }
