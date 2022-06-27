@@ -60,7 +60,7 @@ public class AprendizTest {
                     .conId(3l)
                     .conNombre("Carolina").conApellido("Fonseca").conTipoDoc("CC")
                     .conDocumento("1000791524").conEps("Sanitas").conCategoria("C1")
-                    .conValorCurso(750000).conAbono(750000).conAdicional(70000)
+                    .conValorCurso(1500000).conAbono(750000).conAdicional(70000)
                     .crear();
 
             Assertions.assertEquals(3l, aprendiz.getId());
@@ -70,7 +70,7 @@ public class AprendizTest {
             Assertions.assertEquals("1000791524", aprendiz.getDocumento());
             Assertions.assertEquals("Sanitas", aprendiz.getEps());
             Assertions.assertEquals("C1", aprendiz.getCategoria());
-            Assertions.assertEquals(750000, aprendiz.getValorcurso());
+            Assertions.assertEquals(1500000, aprendiz.getValorcurso());
             Assertions.assertEquals(750000, aprendiz.getAbono());
             Assertions.assertEquals(70000, aprendiz.getAdicional());
         }
@@ -104,7 +104,7 @@ public class AprendizTest {
                     .conId(3l)
                     .conNombre("Carolina").conApellido("Fonseca").conTipoDoc("CC")
                     .conDocumento("1000791524").conEps("Sanitas").conCategoria("B1")
-                    .conValorCurso(600000).conAbono(600000).conAdicional(70000)
+                    .conValorCurso(1200000).conAbono(600000).conAdicional(70000)
                     .crear();
 
             Assertions.assertEquals(3l, aprendiz.getId());
@@ -114,7 +114,7 @@ public class AprendizTest {
             Assertions.assertEquals("1000791524", aprendiz.getDocumento());
             Assertions.assertEquals("Sanitas", aprendiz.getEps());
             Assertions.assertEquals("B1", aprendiz.getCategoria());
-            Assertions.assertEquals(600000, aprendiz.getValorcurso());
+            Assertions.assertEquals(1200000, aprendiz.getValorcurso());
             Assertions.assertEquals(600000, aprendiz.getAbono());
             Assertions.assertEquals(70000, aprendiz.getAdicional());
         }
