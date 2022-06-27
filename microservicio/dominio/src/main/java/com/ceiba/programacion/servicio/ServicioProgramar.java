@@ -6,7 +6,6 @@ import com.ceiba.programacion.modelo.entidad.Programacion;
 import com.ceiba.programacion.modelo.entidad.SolicitudProgramar;
 import com.ceiba.programacion.puerto.repositorio.RepositorioProgramacion;
 
-import java.text.ParseException;
 import java.util.Date;
 
 public class ServicioProgramar {
@@ -28,10 +27,10 @@ public class ServicioProgramar {
         var inasistenciaPractica = this.inasistenciaPractica(solicitudProgramar.getAprendiz());
         var abono = repositorioAprendiz.obtenerAbono(solicitudProgramar.getAprendiz());
         var aprendiz = repositorioAprendiz.obtener(solicitudProgramar.getAprendiz());
-        Programacion.orquestadorClase(contadorTeoria, contadorPractica, contadorRefuerzo, solicitudProgramar.getClase(), aprendiz.getCategoria());
+        var adicional = Aprendiz.calculoAdicional(contadorRefuerzo, inasistenciaTeorica, inasistenciaPractica);
+        Programacion.orquestadorClase(contadorTeoria, contadorPractica, contadorRefuerzo, aprendiz.getCategoria());
         Programacion.disponibilidadInstructor(disponibilidad);
         Programacion.verificacionPago(abono, solicitudProgramar.getClase(), aprendiz.getCategoria());
-        var adicional = Aprendiz.calculoAdicional(contadorRefuerzo, inasistenciaTeorica, inasistenciaPractica);
         Aprendiz.guardarAdicional(solicitudProgramar.getAprendiz(), adicional);
         var programacion = Programacion.crear(solicitudProgramar);
         return repositorioProgramacion.guardar(programacion);

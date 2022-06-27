@@ -44,8 +44,6 @@ public class Programacion {
         return asistencia;
     }
 
-    private RepositorioProgramacion repositorioProgramacion;
-
     public Programacion(Long idprogramacion, Long clase, Long aprendiz, Long instructor, Date fecha, String hora, String asistencia) {
         this.idprogramacion = idprogramacion;
         this.clase = clase;
@@ -63,10 +61,10 @@ public class Programacion {
 
     public static Programacion reconstruir(Long idprogramacion, Long clase, Long aprendiz, Long instructor, Date fecha, String hora, String asistencia) {
         Date fechaHabil = Programacion.validacionFechaClasePractica(fecha, clase);
-        return new Programacion(idprogramacion, clase, aprendiz, instructor, fecha, hora, asistencia);
+        return new Programacion(idprogramacion, clase, aprendiz, instructor, fechaHabil, hora, asistencia);
     }
 
-    public static void orquestadorClase(Long contadorTeoria, Long contadorPractica, Long contadorRefuerzo, Long clase, String categoria) {
+    public static void orquestadorClase(Long contadorTeoria, Long contadorPractica, Long clase, String categoria) {
         if (clase == 1) {
             Programacion.validarTeoria(contadorTeoria, categoria);
         } else if (clase == 2) {
@@ -80,22 +78,21 @@ public class Programacion {
         if (contadorTeoria == 0) {
             System.out.println("Primer registro");
         } else {
-            if (categoria.equals("B1") && (contadorTeoria < 25)) {
-            } else if (categoria.equals("C1") && (contadorTeoria < 30)) {
-            } else {
+            if (categoria.equals(ConstantesProgramacion.B1) && (contadorTeoria < 25)) {
+            } else if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
+                } else {
                 System.out.println("No puede agendar mas clases teoricas");
+                }
             }
         }
-
-    }
 
     public static void validarPractica(Long contadorTeoria, Long contadorPractica, String categoria) {
         if (contadorPractica == 0) {
             System.out.println("Primer registro practico");
         } else if (contadorPractica >=1){
-            if (categoria.equals("B1") && contadorTeoria == 25 && contadorPractica < 25) {
-            } else if (categoria.equals("C1") && contadorTeoria == 30 && contadorPractica < 30) {
-            }
+            if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25) {
+                } else if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30) {
+                }
         } else {
             System.out.println("No puede agendar mas clases practicas");
         }
@@ -127,15 +124,14 @@ public class Programacion {
         }
         return fechaHabil;
     }
-
     public static void verificacionPago(Double abono, Long clase, String categoria) {
-        if (categoria.equals("B1")) {
+        if (categoria.equals(ConstantesProgramacion.B1)) {
             if (clase == 1 && abono >= 600000) {
                 System.out.println("Puede continuar");
             } else if ((clase == 2 || clase == 3) && abono == 1200000) {
                 System.out.println("Puede continuar");
             }
-        } else if (categoria.equals("C1")) {
+        } else if (categoria.equals(ConstantesProgramacion.C1)) {
             if (clase == 1 && abono >= 750000) {
                 System.out.println("Puede continuar");
             } else if ((clase == 2 || clase == 3) && abono == 1500000) {
