@@ -99,5 +99,49 @@ public class ProgramacionTest {
             Programacion.orquestadorClase(30l, 2l, 2l, "C1" );
         }
 
+        @Test
+        void deberiaValidarTeoriaCaso1(){
+            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
+            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(0l);
+            Programacion.validarTeoria(0l, "C1" );
+        }
+
+        @Test
+        void deberiaValidarTeoriaCaso2(){
+            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
+            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(25l);
+            Programacion.validarTeoria(25l, "C1" );
+        }
+
+        @Test
+        void deberiaValidarTeoriaCaso3(){
+            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
+            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(20l);
+            Programacion.validarTeoria(20l, "B1" );
+        }
+
+        @Test
+        void deberiaValidarPracticaCaso1(){
+            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
+            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(30l);
+            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(0l);
+            Programacion.validarPractica(30l, 0l,"C1" );
+        }
+
+        @Test
+        void deberiaValidarPracticaCaso2(){
+            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
+            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(30l);
+            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(2l);
+            Programacion.validarPractica(30l, 2l,"C1" );
+        }
+
+        @Test
+        void deberiaValidarPracticaCaso3() {
+            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
+            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(25l);
+            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(2l);
+            Programacion.validarPractica(25l, 2l, "B1");
+        }
 
 }
