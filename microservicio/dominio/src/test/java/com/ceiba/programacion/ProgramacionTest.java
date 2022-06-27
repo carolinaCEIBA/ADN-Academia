@@ -144,4 +144,31 @@ public class ProgramacionTest {
             Programacion.validarPractica(25l, 2l, "B1");
         }
 
+        @Test
+        void deberiaValidarDisponibilidad() {
+            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
+            Mockito.when(repositorioProgramacion.disponibilidad(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(0l);
+            Programacion.disponibilidadInstructor(0l);
+        }
+
+        @Test
+        void deberiaValidarSaldoCaso1() {
+            Programacion.verificacionPago(600000.0, 1l, "B1");
+        }
+
+        @Test
+        void deberiaValidarSaldoCaso2() {
+            Programacion.verificacionPago(1200000.0, 2l, "B1");
+        }
+
+        @Test
+        void deberiaValidarSaldoCaso3() {
+            Programacion.verificacionPago(750000.0, 1l, "C1");
+        }
+
+        @Test
+        void deberiaValidarSaldoCaso4() {
+            Programacion.verificacionPago(1500000.0, 2l, "C1");
+        }
+
 }
