@@ -81,7 +81,7 @@ public class Programacion {
             }
             else if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
                 } else {
-                    /**System.out.println("No puede agendar mas clases teoricas");**/
+                    System.out.println("No puede agendar mas clases teoricas");
                 }
         }
     }
@@ -92,13 +92,13 @@ public class Programacion {
             if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25)
                 if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30) ;
         } else {
-            /**System.out.println("No puede agendar mas clases practicas");**/
+            System.out.println("No puede agendar mas clases practicas");
         }
     }
 
     public static void disponibilidadInstructor(Long disponibilidad) {
         if (disponibilidad != 0){
-            /**System.out.println("instructor no tiene disponibilidad");**/
+            System.out.println("instructor no tiene disponibilidad");
         }
     }
 
