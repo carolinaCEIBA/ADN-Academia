@@ -114,7 +114,7 @@ public class Programacion {
                 fechaHabil = fecha;
 
         } else {
-            /**System.out.println("La clase no puede ser programada este dia");**/
+            System.out.println("La clase no puede ser programada este dia");
         }
         return fechaHabil;
     }
@@ -124,13 +124,13 @@ public class Programacion {
                 if (clase == 1 && abono >= 600000){
                 } else if ((clase == 2 || clase == 3) && abono == 1200000) {
                 } else {
-                    /**System.out.println("Debe cancelar el valor requerido");**/
+                    System.out.println("Debe cancelar el valor requerido");
                 }
             } else if (categoria.equals(ConstantesProgramacion.C1)) {
                 if (clase == 1 && abono >= 750000){
                 } else if ((clase == 2 || clase == 3) && abono == 1500000){
                 } else {
-                    /**System.out.println("Debe cancelar el valor requerido");**/
+                    System.out.println("Debe cancelar el valor requerido");
                 }
             }
         }

@@ -101,7 +101,7 @@ public class Aprendiz {
         } else if (inasistenciaPractica != null){
             adicionalInasistenciaPractica = adicionalInasistenciaPractica * ConstantesAprendiz.INASISTENCIAPRACTICA;
         } else {
-            /**System.out.println("Procedimiento incorrecto");**/
+            System.out.println("Procedimiento incorrecto");
         }
 
         adicional = adicionalRefuerzo + adicionalInasistenciaTeoria + adicionalInasistenciaPractica;
