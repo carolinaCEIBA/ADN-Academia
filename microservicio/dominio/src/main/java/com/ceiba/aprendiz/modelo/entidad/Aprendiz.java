@@ -2,7 +2,11 @@ package com.ceiba.aprendiz.modelo.entidad;
 
 import com.ceiba.dominio.ValidadorArgumento;
 
+import java.util.logging.Logger;
+
 public class Aprendiz {
+
+    private final static Logger LOGGER = Logger.getLogger("bitacora.subnivel.Utilidades");
     private Long id;
     private String nombre;
     private String apellido;
@@ -101,7 +105,7 @@ public class Aprendiz {
         } else if (inasistenciaPractica != null){
             adicionalInasistenciaPractica = adicionalInasistenciaPractica * ConstantesAprendiz.INASISTENCIAPRACTICA;
         } else {
-            System.out.println("Procedimiento incorrecto");
+            LOGGER.info("Procedimiento incorrecto");
         }
 
         adicional = adicionalRefuerzo + adicionalInasistenciaTeoria + adicionalInasistenciaPractica;

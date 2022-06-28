@@ -1,12 +1,14 @@
 package com.ceiba.programacion.modelo.entidad;
 
 
-import java.time.DayOfWeek;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Logger;
 
 
 public class Programacion {
+
+    private final static Logger LOGGER = Logger.getLogger("bitacora.subnivel.Utilidades");
     private Long idprogramacion;
     private Long clase;
     private Long aprendiz;
@@ -69,7 +71,7 @@ public class Programacion {
         } else if (clase == 2) {
             Programacion.validarPractica(contadorTeoria, contadorPractica, categoria);
         } else {
-            /**System.out.println("No corresponde");**/
+            LOGGER.info("No corresponde");
         }
     }
 
@@ -81,7 +83,7 @@ public class Programacion {
             }
             else if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
                 } else {
-                    System.out.println("No puede agendar mas clases teoricas");
+                LOGGER.info("No puede agendar mas clases teoricas");
                 }
         }
     }
@@ -92,13 +94,13 @@ public class Programacion {
             if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25)
                 if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30) ;
         } else {
-            System.out.println("No puede agendar mas clases practicas");
+            LOGGER.info("No puede agendar mas clases practicas");
         }
     }
 
     public static void disponibilidadInstructor(Long disponibilidad) {
         if (disponibilidad != 0){
-            System.out.println("instructor no tiene disponibilidad");
+            LOGGER.info("instructor no tiene disponibilidad");
         }
     }
 
@@ -114,7 +116,7 @@ public class Programacion {
                 fechaHabil = fecha;
 
         } else {
-            System.out.println("La clase no puede ser programada este dia");
+            LOGGER.info("La clase no puede ser programada este dia");
         }
         return fechaHabil;
     }
@@ -124,13 +126,13 @@ public class Programacion {
                 if (clase == 1 && abono >= 600000){
                 } else if ((clase == 2 || clase == 3) && abono == 1200000) {
                 } else {
-                    System.out.println("Debe cancelar el valor requerido");
+                    LOGGER.info("Debe cancelar el valor requerido");
                 }
             } else if (categoria.equals(ConstantesProgramacion.C1)) {
                 if (clase == 1 && abono >= 750000){
                 } else if ((clase == 2 || clase == 3) && abono == 1500000){
                 } else {
-                    System.out.println("Debe cancelar el valor requerido");
+                    LOGGER.info("Debe cancelar el valor requerido");
                 }
             }
         }
