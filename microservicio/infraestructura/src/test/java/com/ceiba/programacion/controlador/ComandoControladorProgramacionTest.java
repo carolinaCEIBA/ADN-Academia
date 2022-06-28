@@ -44,8 +44,7 @@ class ComandoControladorProgramacionTest {
 
     @Autowired
     private RepositorioProgramacion repositorioProgramacion;
-    @Autowired
-    private RepositorioAprendiz repositorioAprendiz;
+
 
     @Test
     void crearProgramacionExitosa() throws Exception{
@@ -58,10 +57,6 @@ class ComandoControladorProgramacionTest {
 
         var respuesta = objectMapper.readValue(jsonResult, RespuestaProgramar.class);
 
-        Programacion.orquestadorClase(2l, null, 1l, "C1");
-        Programacion.disponibilidadInstructor(0l);
-        Programacion.verificacionPago(750000.0, 1l, "C1");
-        Aprendiz.guardarAdicional(1l, 20000.0);
 
         var programacionGuardada = repositorioProgramacion.obtener(respuesta.getValor());
 

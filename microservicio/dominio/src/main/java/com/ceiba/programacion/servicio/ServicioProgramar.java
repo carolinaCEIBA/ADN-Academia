@@ -19,7 +19,6 @@ public class ServicioProgramar {
 
     public Long ejecutar(SolicitudProgramar solicitudProgramar) {
         /**var contador = this.ejecutarContador(solicitudProgramar.getAprendiz(), solicitudProgramar.getClase());**/
-        System.out.println("ENTRA A EJECUTAR");
         var disponibilidad = this.validarDisponibilidad(solicitudProgramar.getInstructor(), solicitudProgramar.getFecha(), solicitudProgramar.getHora());
         var contadorTeoria = this.ejecutarContadorTeoria(solicitudProgramar.getAprendiz());
         var contadorPractica = this.ejecutarContadorPractica(solicitudProgramar.getAprendiz());
@@ -32,7 +31,7 @@ public class ServicioProgramar {
         Programacion.orquestadorClase(contadorTeoria, contadorPractica, solicitudProgramar.getClase(), aprendiz.getCategoria());
         Programacion.disponibilidadInstructor(disponibilidad);
         Programacion.verificacionPago(abono, solicitudProgramar.getClase(), aprendiz.getCategoria());
-        Aprendiz.guardarAdicional(solicitudProgramar.getAprendiz(), adicional);
+        /**Aprendiz.guardarAdicional(solicitudProgramar.getAprendiz(), adicional);**/
         var programacion = Programacion.crear(solicitudProgramar);
         return repositorioProgramacion.guardar(programacion);
     }

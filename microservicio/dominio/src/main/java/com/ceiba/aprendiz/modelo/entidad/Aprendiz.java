@@ -85,9 +85,9 @@ public class Aprendiz {
         return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }
 
-    public static Double guardarAdicional(Long aprendiz, Double adicional) {
+    /**public static Double guardarAdicional(Long aprendiz, Double adicional) {
         return adicional;
-    }
+    }**/
     public static Double calculoAdicional(Long refuerzo, Long inasistenciaTeorica, Long inasistenciaPractica) {
         double adicionalRefuerzo = 0;
         double adicionalInasistenciaTeoria = 0;
@@ -101,7 +101,7 @@ public class Aprendiz {
         } else if (inasistenciaPractica != null){
             adicionalInasistenciaPractica = adicionalInasistenciaPractica * ConstantesAprendiz.INASISTENCIAPRACTICA;
         } else {
-            System.out.println("Procedimiento incorrecto");
+            /**System.out.println("Procedimiento incorrecto");**/
         }
 
         adicional = adicionalRefuerzo + adicionalInasistenciaTeoria + adicionalInasistenciaPractica;
