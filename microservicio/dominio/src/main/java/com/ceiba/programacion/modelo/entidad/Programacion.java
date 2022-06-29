@@ -5,12 +5,10 @@ import com.ceiba.excepciones.*;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Logger;
 
 
 public class Programacion {
 
-    private final static Logger LOGGER = Logger.getLogger("bitacora.subnivel.Utilidades");
     private Long idprogramacion;
     private Long clase;
     private Long aprendiz;
@@ -129,10 +127,6 @@ public class Programacion {
 
     public static void disponibilidadInstructor(Long disponibilidad) {
         if (disponibilidad != 0){
-            System.out.println(disponibilidad);
-
-            System.out.println("diponibilidad");
-
             throw new ExcepcionInstructor(ConstantesProgramacion.MENSAJE_INSTRUCTOR);
         }
     }
@@ -156,31 +150,24 @@ public class Programacion {
 
     public static void verificacionPrimerPagoB1(Double abono) {
         if (abono < ConstantesProgramacion.ABONO_B1) {
-            System.out.println("verificacionPrimerPagoB1");
             throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
         }
     }
 
     public static void verificacionPrimerPagoC1(Double abono) {
         if (abono < ConstantesProgramacion.ABONO_C1) {
-            System.out.println("verificacionPrimerPagoC1");
             throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
         }
     }
 
     public static void verificacionSegundoPagoB1(Double abono) {
         if (abono < ConstantesProgramacion.TOTAL_B1) {
-            System.out.println("verificacionSegundoPagoB1");
-
             throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
         }
     }
 
     public static void verificacionSegundoPagoC1(Double abono) {
         if (abono < ConstantesProgramacion.TOTAL_C1) {
-            System.out.println("verificacionSegundoPagoC1");
-            System.out.println(abono);
-
             throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
         }
     }

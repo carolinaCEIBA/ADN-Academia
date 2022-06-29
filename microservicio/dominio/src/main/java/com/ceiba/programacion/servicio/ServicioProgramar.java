@@ -46,12 +46,6 @@ public class ServicioProgramar {
     }
 
     public Long validarDisponibilidad(Long id, Date fecha, String hora){
-        System.out.println("diponibilidad");
-
-        System.out.println(id);
-        System.out.println(fecha);
-        System.out.println(hora);
-
         return repositorioProgramacion.disponibilidad(id, fecha, hora);
     }
 

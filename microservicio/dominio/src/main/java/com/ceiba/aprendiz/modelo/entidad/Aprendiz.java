@@ -4,11 +4,8 @@ import com.ceiba.dominio.ValidadorArgumento;
 import com.ceiba.excepciones.ExcepcionInvalido;
 import com.ceiba.programacion.modelo.entidad.ConstantesProgramacion;
 
-import java.util.logging.Logger;
-
 public class Aprendiz {
 
-    private static final Logger LOGGER = Logger.getLogger("bitacora.subnivel.Utilidades");
     private Long id;
     private String nombre;
     private String apellido;
