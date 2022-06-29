@@ -70,6 +70,10 @@ public class RepositorioProgramacionMysql implements RepositorioProgramacion {
     public Long disponibilidad(Long id, Date fecha, String hora){
         LocalDate fechaConvertida = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        System.out.println("diponibilidad convertida");
+        System.out.println(id);
+        System.out.println(fechaConvertida);
+        System.out.println(hora);
         paramSource.addValue("instructor", id);
         paramSource.addValue("fecha", fechaConvertida);
         paramSource.addValue("hora", hora);
@@ -105,14 +109,6 @@ public class RepositorioProgramacionMysql implements RepositorioProgramacion {
 
     }
 
-    /**@Override
-    public Long contador(Long id, Long clase) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("aprendiz", id);
-        paramSource.addValue("clase", clase);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlContadorGenerico, paramSource, Long.class);
-
-    }**/
     @Override
     public Long contadorRefuerzo(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();

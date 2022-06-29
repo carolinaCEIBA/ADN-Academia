@@ -26,7 +26,7 @@ public class ProgramacionTestDataBuilder {
         this.instructor = 1l;
         this.fecha = sdf.parse("2020-06-18");
         this.hora = "03:00 pm";
-        this.asistencia = "Completa";
+        this.asistencia = "NA";
         return this;
     }
 

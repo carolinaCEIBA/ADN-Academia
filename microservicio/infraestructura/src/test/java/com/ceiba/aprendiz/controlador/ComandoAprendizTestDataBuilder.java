@@ -17,7 +17,7 @@ public class ComandoAprendizTestDataBuilder {
     private double adicional;
 
     public ComandoAprendizTestDataBuilder aprendizPorDefecto(){
-        this.id = 3l;
+        this.id = 6l;
         this.nombre = "Carolina";
         this.apellido = "Fonseca";
         this.tipodoc = "CC";

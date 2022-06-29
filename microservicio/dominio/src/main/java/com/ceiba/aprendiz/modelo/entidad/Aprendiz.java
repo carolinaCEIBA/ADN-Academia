@@ -1,12 +1,14 @@
 package com.ceiba.aprendiz.modelo.entidad;
 
 import com.ceiba.dominio.ValidadorArgumento;
+import com.ceiba.excepciones.ExcepcionInvalido;
+import com.ceiba.programacion.modelo.entidad.ConstantesProgramacion;
 
 import java.util.logging.Logger;
 
 public class Aprendiz {
 
-    private final static Logger LOGGER = Logger.getLogger("bitacora.subnivel.Utilidades");
+    private static final Logger LOGGER = Logger.getLogger("bitacora.subnivel.Utilidades");
     private Long id;
     private String nombre;
     private String apellido;
@@ -89,9 +91,6 @@ public class Aprendiz {
         return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }
 
-    /**public static Double guardarAdicional(Long aprendiz, Double adicional) {
-        return adicional;
-    }**/
     public static Double calculoAdicional(Long refuerzo, Long inasistenciaTeorica, Long inasistenciaPractica) {
         double adicionalRefuerzo = 0;
         double adicionalInasistenciaTeoria = 0;
@@ -105,7 +104,7 @@ public class Aprendiz {
         } else if (inasistenciaPractica != null){
             adicionalInasistenciaPractica = adicionalInasistenciaPractica * ConstantesAprendiz.INASISTENCIAPRACTICA;
         } else {
-            LOGGER.info("Procedimiento incorrecto");
+            throw new ExcepcionInvalido(ConstantesProgramacion.MENSAJE_INVALIDO);
         }
 
         adicional = adicionalRefuerzo + adicionalInasistenciaTeoria + adicionalInasistenciaPractica;

@@ -53,19 +53,19 @@ class ComandoControladorProgramacionTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoProgramarTestDataBuilder)))
                 .andExpect(status().is2xxSuccessful()).andReturn();
+
         String jsonResult = resultado.getResponse().getContentAsString();
 
         var respuesta = objectMapper.readValue(jsonResult, RespuestaProgramar.class);
-
-
         var programacionGuardada = repositorioProgramacion.obtener(respuesta.getValor());
+
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         Date fecha = sdf.parse("2021/06/18");
-        Assertions.assertEquals(2l, programacionGuardada.getIdprogramacion());
-        Assertions.assertEquals(2l, programacionGuardada.getClase());
+        Assertions.assertEquals(5l, programacionGuardada.getIdprogramacion());
+        Assertions.assertEquals(1l, programacionGuardada.getClase());
         Assertions.assertEquals(5l, programacionGuardada.getAprendiz());
-        Assertions.assertEquals(2l, programacionGuardada.getInstructor());
+        Assertions.assertEquals(6l, programacionGuardada.getInstructor());
         Assertions.assertEquals(fecha, programacionGuardada.getFecha());
         Assertions.assertEquals("04:00 pm", programacionGuardada.getHora());
         Assertions.assertEquals("No", programacionGuardada.getAsistencia());

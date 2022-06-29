@@ -47,7 +47,7 @@ class ComandoControladorAprendizTest {
         var respuesta = objectMapper.readValue(jsonResult, RespuestaProgramar.class);
         var aprendizCreado = repositorioAprendiz.obtener(respuesta.getValor());
 
-        Assertions.assertEquals(4l, aprendizCreado.getId());
+        Assertions.assertEquals(6l, aprendizCreado.getId());
         Assertions.assertEquals("Carolina", aprendizCreado.getNombre());
         Assertions.assertEquals("Fonseca", aprendizCreado.getApellido());
         Assertions.assertEquals("CC", aprendizCreado.getTipodoc());

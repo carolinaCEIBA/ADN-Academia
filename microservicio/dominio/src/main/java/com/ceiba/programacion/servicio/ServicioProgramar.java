@@ -18,7 +18,6 @@ public class ServicioProgramar {
     }
 
     public Long ejecutar(SolicitudProgramar solicitudProgramar) {
-        /**var contador = this.ejecutarContador(solicitudProgramar.getAprendiz(), solicitudProgramar.getClase());**/
         var disponibilidad = this.validarDisponibilidad(solicitudProgramar.getInstructor(), solicitudProgramar.getFecha(), solicitudProgramar.getHora());
         var contadorTeoria = this.ejecutarContadorTeoria(solicitudProgramar.getAprendiz());
         var contadorPractica = this.ejecutarContadorPractica(solicitudProgramar.getAprendiz());
@@ -28,10 +27,8 @@ public class ServicioProgramar {
         var abono = repositorioAprendiz.obtenerAbono(solicitudProgramar.getAprendiz());
         var aprendiz = repositorioAprendiz.obtener(solicitudProgramar.getAprendiz());
         var adicional = Aprendiz.calculoAdicional(contadorRefuerzo, inasistenciaTeorica, inasistenciaPractica);
-        Programacion.orquestadorClase(contadorTeoria, contadorPractica, solicitudProgramar.getClase(), aprendiz.getCategoria());
+        Programacion.orquestadorClase(contadorTeoria, contadorPractica, solicitudProgramar.getClase(), aprendiz.getCategoria(), abono);
         Programacion.disponibilidadInstructor(disponibilidad);
-        Programacion.verificacionPago(abono, solicitudProgramar.getClase(), aprendiz.getCategoria());
-        /**Aprendiz.guardarAdicional(solicitudProgramar.getAprendiz(), adicional);**/
         var programacion = Programacion.crear(solicitudProgramar);
         return repositorioProgramacion.guardar(programacion);
     }
@@ -48,11 +45,13 @@ public class ServicioProgramar {
         return repositorioProgramacion.contadorRefuerzo(id);
     }
 
-    /**public Long ejecutarContador(Long id, Long clase) {
-        return repositorioProgramacion.contador(id, clase);
-    }**/
-
     public Long validarDisponibilidad(Long id, Date fecha, String hora){
+        System.out.println("diponibilidad");
+
+        System.out.println(id);
+        System.out.println(fecha);
+        System.out.println(hora);
+
         return repositorioProgramacion.disponibilidad(id, fecha, hora);
     }
 

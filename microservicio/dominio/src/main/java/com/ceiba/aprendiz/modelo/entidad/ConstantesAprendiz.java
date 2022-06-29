@@ -1,6 +1,6 @@
 package com.ceiba.aprendiz.modelo.entidad;
 
-public class ConstantesAprendiz {
+class ConstantesAprendiz {
     public static final double VALORB1 = 1200000 * 0.5;
     public static final double VALORC1 = 1500000 * 0.5;
     public static final double VALORCURSOB1 = 1200000;

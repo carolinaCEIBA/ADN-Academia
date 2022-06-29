@@ -8,7 +8,6 @@ public interface RepositorioProgramacion {
     Long guardar(Programacion programacion);
     Programacion obtener(Long id);
     Long disponibilidad(Long id, Date fecha, String hora);
-    /**Long contador(Long id, Long clase);**/
     Long inasistenciaTeorica(Long id);
     Long inasistenciaPractica(Long id);
     Long contadorTeoria(Long id);

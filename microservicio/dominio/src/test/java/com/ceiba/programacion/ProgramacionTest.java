@@ -28,29 +28,21 @@ public class ProgramacionTest {
 
         @Test
         void deberiaCrearProgramacion(){
-            Long idprogramacion = 1l;
-            Long clase = 1l;
-            Long aprendiz = 2l;
-            Long instructor = 1l;
-            Date fecha = date;
-            String hora = "03:00 pm";
-            String asistencia = "Si";
-
 
             var programacion = new ProgramacionTestDataBuilder()
-                    .conIdprogramacion(idprogramacion)
-                    .conClase(clase)
-                    .conAprendiz(aprendiz)
-                    .conInstructor(instructor)
-                    .conFecha(fecha)
-                    .conHora(hora)
-                    .conAsistencia(asistencia).crear();
+                    .conIdprogramacion(1l)
+                    .conClase(1l)
+                    .conAprendiz(2l)
+                    .conInstructor(1l)
+                    .conFecha(date2)
+                    .conHora("03:00 pm")
+                    .conAsistencia("Si").crear();
 
             Assertions.assertEquals(1l, programacion.getIdprogramacion());
             Assertions.assertEquals(1l, programacion.getClase());
             Assertions.assertEquals(2l, programacion.getAprendiz());
             Assertions.assertEquals(1l, programacion.getInstructor());
-            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals(date2, programacion.getFecha());
             Assertions.assertEquals("03:00 pm", programacion.getHora());
             Assertions.assertEquals("Si", programacion.getAsistencia());
 
@@ -58,132 +50,45 @@ public class ProgramacionTest {
         }
 
         @Test
-        void deberiarReconstruirProgramacion(){
-            Long idprogramacion = 1l;
-            Long clase = 1l;
-            Long aprendiz = 2l;
-            Long instructor = 1l;
-            Date fecha = date;
-            String hora = "03:00 pm";
-            String asistencia = "Si";
-
+        void deberiarReconstruirProgramacion() throws ParseException {
 
             var programacion = new ProgramacionTestDataBuilder()
-                    .conIdprogramacion(idprogramacion)
-                    .conClase(clase)
-                    .conAprendiz(aprendiz)
-                    .conInstructor(instructor)
-                    .conFecha(fecha)
-                    .conHora(hora)
-                    .conAsistencia(asistencia).reconstruir();
+                    .conIdprogramacion(1l)
+                    .conClase(1l)
+                    .conAprendiz(2l)
+                    .conInstructor(1l)
+                    .conFecha(date2)
+                    .conHora("03:00 pm")
+                    .conAsistencia("Si").reconstruir();
 
             Assertions.assertEquals(1l, programacion.getIdprogramacion());
             Assertions.assertEquals(1l, programacion.getClase());
             Assertions.assertEquals(2l, programacion.getAprendiz());
             Assertions.assertEquals(1l, programacion.getInstructor());
-            Assertions.assertEquals(date, programacion.getFecha());
+            Assertions.assertEquals(date2, programacion.getFecha());
             Assertions.assertEquals("03:00 pm", programacion.getHora());
             Assertions.assertEquals("Si", programacion.getAsistencia());
 
         }
 
         @Test
-        void deberiaOrquestar(){
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(10l);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(null);
-            Programacion.orquestadorClase(10l, null, 1l, "C1" );
+        void orquestarCaso1(){
+            Programacion.orquestadorClase(10l, null, 1l, ConstantesProgramacion.B1, ConstantesProgramacion.ABONO_B1);
         }
 
         @Test
-        void deberiaOrquestarCaso2(){
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(30l);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(2l);
-            Programacion.orquestadorClase(30l, 2l, 2l, "C1" );
+        void orquestarCaso2(){
+            Programacion.orquestadorClase(ConstantesProgramacion.CLASESTEORIA_B1, 2l, 2l, ConstantesProgramacion.B1, ConstantesProgramacion.TOTAL_B1);
         }
 
         @Test
-        void deberiaValidarTeoriaCaso1(){
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(0l);
-            Programacion.validarTeoria(0l, "C1" );
+        void orquestarCaso3(){
+            Programacion.orquestadorClase(10l, null, 1l, ConstantesProgramacion.C1, ConstantesProgramacion.ABONO_C1);
         }
 
         @Test
-        void deberiaValidarTeoriaCaso2(){
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(25l);
-            Programacion.validarTeoria(25l, "C1" );
+        void orquestarCaso4(){
+            Programacion.orquestadorClase(ConstantesProgramacion.CLASESTEORIA_C1, 2l, 2l, ConstantesProgramacion.C1, ConstantesProgramacion.TOTAL_C1);
         }
-
-        @Test
-        void deberiaValidarTeoriaCaso3(){
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorTeoria(Mockito.any())).thenReturn(20l);
-            Programacion.validarTeoria(20l, "B1" );
-        }
-
-        @Test
-        void deberiaValidarPracticaCaso1(){
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(30l);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(0l);
-            Programacion.validarPractica(30l, 0l,"C1" );
-        }
-
-        @Test
-        void deberiaValidarPracticaCaso2(){
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(30l);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(2l);
-            Programacion.validarPractica(30l, 2l,"C1" );
-        }
-
-        @Test
-        void deberiaValidarPracticaCaso3() {
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(25l);
-            Mockito.when(repositorioProgramacion.contadorPractica(Mockito.any())).thenReturn(2l);
-            Programacion.validarPractica(25l, 2l, "B1");
-        }
-
-        @Test
-        void deberiaValidarDisponibilidad() {
-            var repositorioProgramacion = Mockito.mock(RepositorioProgramacion.class);
-            Mockito.when(repositorioProgramacion.disponibilidad(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(0l);
-            Programacion.disponibilidadInstructor(0l);
-        }
-
-        @Test
-        void deberiaValidarSaldoCaso1() {
-            Programacion.verificacionPago(600000.0, 1l, "B1");
-        }
-
-        @Test
-        void deberiaValidarSaldoCaso2() {
-            Programacion.verificacionPago(1200000.0, 2l, "B1");
-        }
-
-        @Test
-        void deberiaValidarSaldoCaso3() {
-            Programacion.verificacionPago(750000.0, 1l, "C1");
-        }
-
-        @Test
-        void deberiaValidarSaldoCaso4() {
-            Programacion.verificacionPago(1500000.0, 2l, "C1");
-        }
-
-        @Test
-        void deberiaValidarFechaCaso1() {
-            Programacion.validacionFechaClasePractica(date, 2l);
-        }
-
-        @Test
-        void deberiaValidarFechaCaso2() {
-            Programacion.validacionFechaClasePractica(date2, 2l);
-        }
-
 
 }

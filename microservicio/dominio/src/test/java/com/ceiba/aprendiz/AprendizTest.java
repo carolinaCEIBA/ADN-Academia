@@ -14,14 +14,10 @@ public class AprendizTest {
         @Test
         void deberiaCrearAprendizExitoso() {
 
-            var aprendiz = new AprendizTestDataBuilder()
-                    .conId(3l)
-                    .conNombre("Carolina").conApellido("Fonseca").conTipoDoc("CC")
-                    .conDocumento("1000791524").conEps("Sanitas").conCategoria("C1")
-                    .conValorCurso(1500000).conAbono(1500000).conAdicional(70000)
+            var aprendiz = new AprendizTestDataBuilder().conAprendizPorDefecto()
                     .crear();
 
-            Assertions.assertEquals(3l, aprendiz.getId());
+            Assertions.assertEquals(5l, aprendiz.getId());
             Assertions.assertEquals("Carolina", aprendiz.getNombre());
             Assertions.assertEquals("Fonseca", aprendiz.getApellido());
             Assertions.assertEquals("CC", aprendiz.getTipodoc());
@@ -36,14 +32,10 @@ public class AprendizTest {
         @Test
         void deberiaReconstruirAprendizExitoso() {
 
-            var aprendiz = new AprendizTestDataBuilder()
-                    .conId(3l)
-                    .conNombre("Carolina").conApellido("Fonseca").conTipoDoc("CC")
-                    .conDocumento("1000791524").conEps("Sanitas").conCategoria("C1")
-                    .conValorCurso(1500000).conAbono(1500000).conAdicional(70000)
+            var aprendiz = new AprendizTestDataBuilder().conAprendizPorDefecto()
                     .reconstruir();
 
-            Assertions.assertEquals(3l, aprendiz.getId());
+            Assertions.assertEquals(5l, aprendiz.getId());
             Assertions.assertEquals("Carolina", aprendiz.getNombre());
             Assertions.assertEquals("Fonseca", aprendiz.getApellido());
             Assertions.assertEquals("CC", aprendiz.getTipodoc());
@@ -52,72 +44,6 @@ public class AprendizTest {
             Assertions.assertEquals("C1", aprendiz.getCategoria());
             Assertions.assertEquals(1500000, aprendiz.getValorcurso());
             Assertions.assertEquals(1500000, aprendiz.getAbono());
-            Assertions.assertEquals(70000, aprendiz.getAdicional());
-        }
-
-        @Test
-        void deberiaCreacionConValidacionDePagoC1Caso2() {
-
-            var aprendiz = new AprendizTestDataBuilder()
-                    .conId(3l)
-                    .conNombre("Carolina").conApellido("Fonseca").conTipoDoc("CC")
-                    .conDocumento("1000791524").conEps("Sanitas").conCategoria("C1")
-                    .conValorCurso(1500000).conAbono(750000).conAdicional(70000)
-                    .crear();
-
-            Assertions.assertEquals(3l, aprendiz.getId());
-            Assertions.assertEquals("Carolina", aprendiz.getNombre());
-            Assertions.assertEquals("Fonseca", aprendiz.getApellido());
-            Assertions.assertEquals("CC", aprendiz.getTipodoc());
-            Assertions.assertEquals("1000791524", aprendiz.getDocumento());
-            Assertions.assertEquals("Sanitas", aprendiz.getEps());
-            Assertions.assertEquals("C1", aprendiz.getCategoria());
-            Assertions.assertEquals(1500000, aprendiz.getValorcurso());
-            Assertions.assertEquals(750000, aprendiz.getAbono());
-            Assertions.assertEquals(70000, aprendiz.getAdicional());
-        }
-
-        @Test
-        void deberiaCreacionConValidacionDePagoB1Caso1() {
-
-            var aprendiz = new AprendizTestDataBuilder()
-                    .conId(3l)
-                    .conNombre("Carolina").conApellido("Fonseca").conTipoDoc("CC")
-                    .conDocumento("1000791524").conEps("Sanitas").conCategoria("B1")
-                    .conValorCurso(1200000).conAbono(1200000).conAdicional(70000)
-                    .crear();
-
-            Assertions.assertEquals(3l, aprendiz.getId());
-            Assertions.assertEquals("Carolina", aprendiz.getNombre());
-            Assertions.assertEquals("Fonseca", aprendiz.getApellido());
-            Assertions.assertEquals("CC", aprendiz.getTipodoc());
-            Assertions.assertEquals("1000791524", aprendiz.getDocumento());
-            Assertions.assertEquals("Sanitas", aprendiz.getEps());
-            Assertions.assertEquals("B1", aprendiz.getCategoria());
-            Assertions.assertEquals(1200000, aprendiz.getValorcurso());
-            Assertions.assertEquals(1200000, aprendiz.getAbono());
-            Assertions.assertEquals(70000, aprendiz.getAdicional());
-        }
-
-        @Test
-        void deberiaCreacionConValidacionDePagoB1Caso2() {
-
-            var aprendiz = new AprendizTestDataBuilder()
-                    .conId(3l)
-                    .conNombre("Carolina").conApellido("Fonseca").conTipoDoc("CC")
-                    .conDocumento("1000791524").conEps("Sanitas").conCategoria("B1")
-                    .conValorCurso(1200000).conAbono(600000).conAdicional(70000)
-                    .crear();
-
-            Assertions.assertEquals(3l, aprendiz.getId());
-            Assertions.assertEquals("Carolina", aprendiz.getNombre());
-            Assertions.assertEquals("Fonseca", aprendiz.getApellido());
-            Assertions.assertEquals("CC", aprendiz.getTipodoc());
-            Assertions.assertEquals("1000791524", aprendiz.getDocumento());
-            Assertions.assertEquals("Sanitas", aprendiz.getEps());
-            Assertions.assertEquals("B1", aprendiz.getCategoria());
-            Assertions.assertEquals(1200000, aprendiz.getValorcurso());
-            Assertions.assertEquals(600000, aprendiz.getAbono());
             Assertions.assertEquals(70000, aprendiz.getAdicional());
         }
 
@@ -200,17 +126,6 @@ public class AprendizTest {
                     ExcepcionValorObligatorio.class,
                     "La categoria es obligatoria para el registro");
         }
-
-        @Test
-        void deberiaCalcularAdicionalCaso1() {
-            Aprendiz.calculoAdicional(2l, 1l, 2l);
-        }
-
-        @Test
-        void deberiaCalcularAdicionalCaso2() {
-            Aprendiz.calculoAdicional(null, null, null);
-        }
-
 
 }
 

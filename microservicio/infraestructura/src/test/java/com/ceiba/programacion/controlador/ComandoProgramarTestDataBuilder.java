@@ -19,9 +19,9 @@ public class ComandoProgramarTestDataBuilder {
     public ComandoProgramarTestDataBuilder programacionPorDefecto() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         this.idprogramacion = 2l;
-        this.clase = 2l;
-        this.aprendiz = 3l;
-        this.instructor = 2l;
+        this.clase = 1l;
+        this.aprendiz = 5l;
+        this.instructor = 6l;
         this.fecha = sdf.parse("2021/06/18");
         this.hora = "04:00 pm";
         this.asistencia = "No";

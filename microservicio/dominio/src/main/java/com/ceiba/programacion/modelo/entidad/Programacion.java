@@ -1,6 +1,8 @@
 package com.ceiba.programacion.modelo.entidad;
 
 
+import com.ceiba.excepciones.*;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -65,42 +67,73 @@ public class Programacion {
         return new Programacion(idprogramacion, clase, aprendiz, instructor, fechaHabil, hora, asistencia);
     }
 
-    public static void orquestadorClase(Long contadorTeoria, Long contadorPractica, Long clase, String categoria) {
-        if (clase == 1) {
-            Programacion.validarTeoria(contadorTeoria, categoria);
-        } else if (clase == 2) {
-            Programacion.validarPractica(contadorTeoria, contadorPractica, categoria);
-        } else {
-            LOGGER.info("No corresponde");
-        }
-    }
-
-    public static void validarTeoria(Long contadorTeoria, String categoria) {
-        if (contadorTeoria == 0) {
-        } else {
-            if (categoria.equals(ConstantesProgramacion.B1) && (contadorTeoria < 25)) {
-
+    public static void orquestadorClase(Long contadorTeoria, Long contadorPractica, Long clase, String categoria, Double abono) {
+        if (clase == ConstantesProgramacion.TEORIA) {
+            if (categoria.equals(ConstantesProgramacion.B1)){
+                Programacion.validarTeoriaB1(contadorTeoria, categoria);
+                Programacion.verificacionPrimerPagoB1(abono);
+            } else if (categoria.equals(ConstantesProgramacion.C1)){
+                Programacion.validarTeoriaC1(contadorTeoria, categoria);
+                Programacion.verificacionPrimerPagoC1(abono);
             }
-            else if (categoria.equals(ConstantesProgramacion.C1) && (contadorTeoria < 30)) {
-                } else {
-                LOGGER.info("No puede agendar mas clases teoricas");
-                }
+        } else if (clase == ConstantesProgramacion.PRACTICA) {
+            if (categoria.equals(ConstantesProgramacion.B1)){
+                Programacion.validarPracticaB1(contadorTeoria, contadorPractica, categoria);
+                Programacion.verificacionSegundoPagoB1(abono);
+            } else if (categoria.equals(ConstantesProgramacion.C1)){
+                Programacion.validarPracticaC1(contadorTeoria, contadorPractica, categoria);
+                Programacion.verificacionSegundoPagoC1(abono);
+            }
+        } else if (clase == ConstantesProgramacion.REFUERZO){
+                Programacion.verificacionSegundoPagoC1(abono);
+        } else {
+            throw new ExcepcionInvalido(ConstantesProgramacion.MENSAJE_INVALIDO);
         }
     }
 
-    public static void validarPractica(Long contadorTeoria, Long contadorPractica, String categoria) {
-        if (contadorPractica == 0) {
-        } else if (contadorPractica >= 1) {
-            if (categoria.equals(ConstantesProgramacion.B1) && contadorTeoria == 25 && contadorPractica < 25)
-                if (categoria.equals(ConstantesProgramacion.C1) && contadorTeoria == 30 && contadorPractica < 30) ;
+    public static void validarTeoriaB1(Long contadorTeoria, String categoria) {
+        if (contadorTeoria == ConstantesProgramacion.PRIMER_REGISTRO || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_B1) {
+            } else {
+            throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
+            }
+    }
+
+    public static void validarTeoriaC1(Long contadorTeoria, String categoria) {
+        if (contadorTeoria == ConstantesProgramacion.PRIMER_REGISTRO || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_C1) {
         } else {
-            LOGGER.info("No puede agendar mas clases practicas");
+            throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
+        }
+    }
+
+    public static void validarPracticaB1(Long contadorTeoria, Long contadorPractica, String categoria) {
+        if (contadorTeoria == ConstantesProgramacion.CLASESTEORIA_B1) {
+            if (contadorPractica == ConstantesProgramacion.PRIMER_REGISTRO || contadorPractica < ConstantesProgramacion.CLASESPRACTICA_B1){
+            } else {
+                throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
+            }
+        } else {
+            throw new ExcepcionTeoria(ConstantesProgramacion.MENSAJE_TEORIA);
+        }
+    }
+
+    public static void validarPracticaC1(Long contadorTeoria, Long contadorPractica, String categoria) {
+        if (contadorTeoria == ConstantesProgramacion.CLASESTEORIA_C1) {
+            if (contadorPractica == ConstantesProgramacion.PRIMER_REGISTRO || contadorPractica < ConstantesProgramacion.CLASESPRACTICA_C1){
+            } else {
+                throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
+            }
+        } else {
+            throw new ExcepcionTeoria(ConstantesProgramacion.MENSAJE_TEORIA);
         }
     }
 
     public static void disponibilidadInstructor(Long disponibilidad) {
         if (disponibilidad != 0){
-            LOGGER.info("instructor no tiene disponibilidad");
+            System.out.println(disponibilidad);
+
+            System.out.println("diponibilidad");
+
+            throw new ExcepcionInstructor(ConstantesProgramacion.MENSAJE_INSTRUCTOR);
         }
     }
 
@@ -112,28 +145,44 @@ public class Programacion {
         if (clase == 1) {
             fechaHabil = fecha;
         } else if (clase == 2 || clase == 3) {
-            if (!(dayOfWeek == 7 || dayOfWeek == 1))
+            if (!(dayOfWeek == 7 || dayOfWeek == 1)) {
                 fechaHabil = fecha;
-
+            }
         } else {
-            LOGGER.info("La clase no puede ser programada este dia");
+            throw new ExcepcionFecha(ConstantesProgramacion.MENSAJE_FECHA);
         }
         return fechaHabil;
     }
 
-    public static void verificacionPago(Double abono, Long clase, String categoria) {
-        if (categoria.equals(ConstantesProgramacion.B1)) {
-                if (clase == 1 && abono >= 600000){
-                } else if ((clase == 2 || clase == 3) && abono == 1200000) {
-                } else {
-                    LOGGER.info("Debe cancelar el valor requerido");
-                }
-            } else if (categoria.equals(ConstantesProgramacion.C1)) {
-                if (clase == 1 && abono >= 750000){
-                } else if ((clase == 2 || clase == 3) && abono == 1500000){
-                } else {
-                    LOGGER.info("Debe cancelar el valor requerido");
-                }
-            }
+    public static void verificacionPrimerPagoB1(Double abono) {
+        if (abono < ConstantesProgramacion.ABONO_B1) {
+            System.out.println("verificacionPrimerPagoB1");
+            throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
         }
     }
+
+    public static void verificacionPrimerPagoC1(Double abono) {
+        if (abono < ConstantesProgramacion.ABONO_C1) {
+            System.out.println("verificacionPrimerPagoC1");
+            throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
+        }
+    }
+
+    public static void verificacionSegundoPagoB1(Double abono) {
+        if (abono < ConstantesProgramacion.TOTAL_B1) {
+            System.out.println("verificacionSegundoPagoB1");
+
+            throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
+        }
+    }
+
+    public static void verificacionSegundoPagoC1(Double abono) {
+        if (abono < ConstantesProgramacion.TOTAL_C1) {
+            System.out.println("verificacionSegundoPagoC1");
+            System.out.println(abono);
+
+            throw new ExcepcionPago(ConstantesProgramacion.MENSAJE_PAGO);
+        }
+    }
+
+}
