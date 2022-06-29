@@ -1,8 +1,9 @@
 package com.ceiba.programacion.modelo.entidad;
 
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+@NoArgsConstructor(access= AccessLevel.PRIVATE)
 public class ConstantesProgramacion {
     public static final String C1 = "C1";
     public static final String B1 = "B1";
