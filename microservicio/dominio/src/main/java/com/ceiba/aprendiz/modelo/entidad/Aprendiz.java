@@ -88,7 +88,7 @@ public class Aprendiz {
         return new Aprendiz(id, nombre, apellido, tipodoc, documento, eps, categoria, valorcurso, abono, adicional);
     }
 
-    public static Double calculoAdicional(Long refuerzo, Long inasistenciaTeorica, Long inasistenciaPractica) {
+    /**public static Double calculoAdicional(Long refuerzo, Long inasistenciaTeorica, Long inasistenciaPractica) {
         double adicionalRefuerzo = 0;
         double adicionalInasistenciaTeoria = 0;
         double adicionalInasistenciaPractica = 0;
@@ -106,6 +106,6 @@ public class Aprendiz {
 
         adicional = adicionalRefuerzo + adicionalInasistenciaTeoria + adicionalInasistenciaPractica;
         return adicional;
-    }
+    }**/
 
 }

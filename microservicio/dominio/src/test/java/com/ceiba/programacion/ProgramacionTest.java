@@ -123,6 +123,20 @@ public class ProgramacionTest {
         }
 
         @Test
+        void orquestarCaso9(){
+            BasePrueba.assertThrows(() -> Programacion.orquestadorClase(0l, null, 2l, ConstantesProgramacion.B1, ConstantesProgramacion.TOTAL_B1),
+                    ExcepcionTeoria.class,
+                    ConstantesProgramacion.MENSAJE_TEORIA);
+        }
+
+        @Test
+        void orquestarCaso10(){
+            BasePrueba.assertThrows(() -> Programacion.orquestadorClase(26l, 0l, 1l, ConstantesProgramacion.B1, ConstantesProgramacion.TOTAL_B1),
+                    ExcepcionValidacionClase.class,
+                    ConstantesProgramacion.MENSAJE_CLASE);
+        }
+
+        @Test
         void validacionDisponibilidad(){
             BasePrueba.assertThrows(() -> Programacion.disponibilidadInstructor(2l),
                     ExcepcionInstructor.class,
