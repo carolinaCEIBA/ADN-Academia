@@ -104,23 +104,13 @@ public class Programacion {
     }
 
     public static void validarPracticaB1(Long contadorTeoria, Long contadorPractica) {
-        if (contadorTeoria.equals(ConstantesProgramacion.CLASESTEORIA_B1)) {
-            if (contadorPractica.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorPractica < ConstantesProgramacion.CLASESPRACTICA_B1){
-            } else {
-                throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
-            }
-        } else {
+        if (!(contadorTeoria.equals(ConstantesProgramacion.CLASESTEORIA_B1) && (contadorPractica.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorPractica < ConstantesProgramacion.CLASESPRACTICA_B1))) {
             throw new ExcepcionTeoria(ConstantesProgramacion.MENSAJE_TEORIA);
         }
     }
 
     public static void validarPracticaC1(Long contadorTeoria, Long contadorPractica) {
-        if (contadorTeoria.equals(ConstantesProgramacion.CLASESTEORIA_C1)) {
-            if (contadorPractica.equals(ConstantesProgramacion.PRIMER_REGISTRO)|| contadorPractica < ConstantesProgramacion.CLASESPRACTICA_C1){
-            } else {
-                throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
-            }
-        } else {
+        if (!(contadorTeoria.equals(ConstantesProgramacion.CLASESTEORIA_C1) && (contadorPractica.equals(ConstantesProgramacion.PRIMER_REGISTRO)|| contadorPractica < ConstantesProgramacion.CLASESPRACTICA_C1))) {
             throw new ExcepcionTeoria(ConstantesProgramacion.MENSAJE_TEORIA);
         }
     }
