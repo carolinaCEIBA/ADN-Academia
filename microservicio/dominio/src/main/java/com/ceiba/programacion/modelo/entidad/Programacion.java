@@ -90,15 +90,13 @@ public class Programacion {
     }
 
     public static void validarTeoriaB1(Long contadorTeoria) {
-        if (contadorTeoria.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_B1) {
-            } else {
+        if (!(contadorTeoria.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_B1)) {
             throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
-            }
+        }
     }
 
     public static void validarTeoriaC1(Long contadorTeoria) {
-        if (contadorTeoria.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_C1) {
-        } else {
+        if (!(contadorTeoria.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_C1)) {
             throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
         }
     }

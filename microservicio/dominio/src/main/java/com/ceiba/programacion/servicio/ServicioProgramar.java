@@ -21,12 +21,12 @@ public class ServicioProgramar {
         var disponibilidad = this.validarDisponibilidad(solicitudProgramar.getInstructor(), solicitudProgramar.getFecha(), solicitudProgramar.getHora());
         var contadorTeoria = this.ejecutarContadorTeoria(solicitudProgramar.getAprendiz());
         var contadorPractica = this.ejecutarContadorPractica(solicitudProgramar.getAprendiz());
-        var contadorRefuerzo = this.ejecutarContadorRefuerzo(solicitudProgramar.getAprendiz());
+        /**var contadorRefuerzo = this.ejecutarContadorRefuerzo(solicitudProgramar.getAprendiz());
         var inasistenciaTeorica = this.inasistenciaTeorica(solicitudProgramar.getAprendiz());
         var inasistenciaPractica = this.inasistenciaPractica(solicitudProgramar.getAprendiz());
+        var adicional = Aprendiz.calculoAdicional(contadorRefuerzo, inasistenciaTeorica, inasistenciaPractica);**/
         var abono = repositorioAprendiz.obtenerAbono(solicitudProgramar.getAprendiz());
         var aprendiz = repositorioAprendiz.obtener(solicitudProgramar.getAprendiz());
-        var adicional = Aprendiz.calculoAdicional(contadorRefuerzo, inasistenciaTeorica, inasistenciaPractica);
         Programacion.orquestadorClase(contadorTeoria, contadorPractica, solicitudProgramar.getClase(), aprendiz.getCategoria(), abono);
         Programacion.disponibilidadInstructor(disponibilidad);
         var programacion = Programacion.crear(solicitudProgramar);
