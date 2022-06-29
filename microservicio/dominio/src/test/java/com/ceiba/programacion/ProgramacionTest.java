@@ -3,6 +3,9 @@ package com.ceiba.programacion;
 import com.ceiba.BasePrueba;
 import com.ceiba.aprendiz.AprendizTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.excepciones.ExcepcionInstructor;
+import com.ceiba.excepciones.ExcepcionTeoria;
+import com.ceiba.excepciones.ExcepcionValidacionClase;
 import com.ceiba.programacion.modelo.entidad.ConstantesProgramacion;
 import com.ceiba.programacion.modelo.entidad.Programacion;
 import com.ceiba.programacion.puerto.repositorio.RepositorioProgramacion;
@@ -90,4 +93,40 @@ public class ProgramacionTest {
         void orquestarCaso4(){
             Programacion.orquestadorClase(ConstantesProgramacion.CLASESTEORIA_C1, 2l, 2l, ConstantesProgramacion.C1, ConstantesProgramacion.TOTAL_C1);
         }
+
+        @Test
+        void orquestarCaso5(){
+            BasePrueba.assertThrows(() -> Programacion.orquestadorClase(2l, 2l, 2l, ConstantesProgramacion.C1, ConstantesProgramacion.TOTAL_C1),
+                    ExcepcionTeoria.class,
+                    ConstantesProgramacion.MENSAJE_TEORIA);
+        }
+
+        @Test
+        void orquestarCaso6(){
+            BasePrueba.assertThrows(() -> Programacion.orquestadorClase(2l, 2l, 2l, ConstantesProgramacion.B1, ConstantesProgramacion.TOTAL_B1),
+                    ExcepcionTeoria.class,
+                    ConstantesProgramacion.MENSAJE_TEORIA);
+        }
+
+        @Test
+        void orquestarCaso7(){
+            BasePrueba.assertThrows(() -> Programacion.orquestadorClase(31l, null, 1l, ConstantesProgramacion.C1, ConstantesProgramacion.TOTAL_C1),
+                    ExcepcionValidacionClase.class,
+                    ConstantesProgramacion.MENSAJE_CLASE);
+        }
+
+        @Test
+        void orquestarCaso8(){
+            BasePrueba.assertThrows(() -> Programacion.orquestadorClase(26l, null, 1l, ConstantesProgramacion.B1, ConstantesProgramacion.TOTAL_B1),
+                    ExcepcionValidacionClase.class,
+                    ConstantesProgramacion.MENSAJE_CLASE);
+        }
+
+        @Test
+        void validacionDisponibilidad(){
+            BasePrueba.assertThrows(() -> Programacion.disponibilidadInstructor(2l),
+                    ExcepcionInstructor.class,
+                    ConstantesProgramacion.MENSAJE_INSTRUCTOR);
+        }
+
 }
