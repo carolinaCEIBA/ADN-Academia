@@ -68,46 +68,46 @@ public class Programacion {
     }
 
     public static void orquestadorClase(Long contadorTeoria, Long contadorPractica, Long clase, String categoria, Double abono) {
-        if (clase == ConstantesProgramacion.TEORIA) {
+        if (clase.equals(ConstantesProgramacion.TEORIA)) {
             if (categoria.equals(ConstantesProgramacion.B1)){
-                Programacion.validarTeoriaB1(contadorTeoria, categoria);
+                Programacion.validarTeoriaB1(contadorTeoria);
                 Programacion.verificacionPrimerPagoB1(abono);
             } else if (categoria.equals(ConstantesProgramacion.C1)){
-                Programacion.validarTeoriaC1(contadorTeoria, categoria);
+                Programacion.validarTeoriaC1(contadorTeoria);
                 Programacion.verificacionPrimerPagoC1(abono);
             }
-        } else if (clase == ConstantesProgramacion.PRACTICA) {
+        } else if (clase.equals(ConstantesProgramacion.PRACTICA)) {
             if (categoria.equals(ConstantesProgramacion.B1)){
-                Programacion.validarPracticaB1(contadorTeoria, contadorPractica, categoria);
+                Programacion.validarPracticaB1(contadorTeoria, contadorPractica);
                 Programacion.verificacionSegundoPagoB1(abono);
             } else if (categoria.equals(ConstantesProgramacion.C1)){
-                Programacion.validarPracticaC1(contadorTeoria, contadorPractica, categoria);
+                Programacion.validarPracticaC1(contadorTeoria, contadorPractica);
                 Programacion.verificacionSegundoPagoC1(abono);
             }
-        } else if (clase == ConstantesProgramacion.REFUERZO){
+        } else if (clase.equals(ConstantesProgramacion.REFUERZO)){
                 Programacion.verificacionSegundoPagoC1(abono);
         } else {
             throw new ExcepcionInvalido(ConstantesProgramacion.MENSAJE_INVALIDO);
         }
     }
 
-    public static void validarTeoriaB1(Long contadorTeoria, String categoria) {
-        if (contadorTeoria == ConstantesProgramacion.PRIMER_REGISTRO || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_B1) {
+    public static void validarTeoriaB1(Long contadorTeoria) {
+        if (contadorTeoria.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_B1) {
             } else {
             throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
             }
     }
 
-    public static void validarTeoriaC1(Long contadorTeoria, String categoria) {
-        if (contadorTeoria == ConstantesProgramacion.PRIMER_REGISTRO || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_C1) {
+    public static void validarTeoriaC1(Long contadorTeoria) {
+        if (contadorTeoria.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorTeoria < ConstantesProgramacion.CLASESTEORIA_C1) {
         } else {
             throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
         }
     }
 
-    public static void validarPracticaB1(Long contadorTeoria, Long contadorPractica, String categoria) {
-        if (contadorTeoria == ConstantesProgramacion.CLASESTEORIA_B1) {
-            if (contadorPractica == ConstantesProgramacion.PRIMER_REGISTRO || contadorPractica < ConstantesProgramacion.CLASESPRACTICA_B1){
+    public static void validarPracticaB1(Long contadorTeoria, Long contadorPractica) {
+        if (contadorTeoria.equals(ConstantesProgramacion.CLASESTEORIA_B1)) {
+            if (contadorPractica.equals(ConstantesProgramacion.PRIMER_REGISTRO) || contadorPractica < ConstantesProgramacion.CLASESPRACTICA_B1){
             } else {
                 throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
             }
@@ -116,9 +116,9 @@ public class Programacion {
         }
     }
 
-    public static void validarPracticaC1(Long contadorTeoria, Long contadorPractica, String categoria) {
-        if (contadorTeoria == ConstantesProgramacion.CLASESTEORIA_C1) {
-            if (contadorPractica == ConstantesProgramacion.PRIMER_REGISTRO || contadorPractica < ConstantesProgramacion.CLASESPRACTICA_C1){
+    public static void validarPracticaC1(Long contadorTeoria, Long contadorPractica) {
+        if (contadorTeoria.equals(ConstantesProgramacion.CLASESTEORIA_C1)) {
+            if (contadorPractica.equals(ConstantesProgramacion.PRIMER_REGISTRO)|| contadorPractica < ConstantesProgramacion.CLASESPRACTICA_C1){
             } else {
                 throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
             }
@@ -142,9 +142,9 @@ public class Programacion {
         c.setTime(fecha);
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
         Date fechaHabil = null;
-        if (clase == 1) {
+        if (clase.equals(ConstantesProgramacion.TEORIA)) {
             fechaHabil = fecha;
-        } else if (clase == 2 || clase == 3) {
+        } else if (clase.equals(ConstantesProgramacion.PRACTICA) || clase.equals(ConstantesProgramacion.REFUERZO)) {
             if (!(dayOfWeek == 7 || dayOfWeek == 1)) {
                 fechaHabil = fecha;
             }

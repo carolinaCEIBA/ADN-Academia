@@ -90,5 +90,4 @@ public class ProgramacionTest {
         void orquestarCaso4(){
             Programacion.orquestadorClase(ConstantesProgramacion.CLASESTEORIA_C1, 2l, 2l, ConstantesProgramacion.C1, ConstantesProgramacion.TOTAL_C1);
         }
-
 }
