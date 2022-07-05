@@ -1,6 +1,6 @@
 package com.ceiba.aprendiz.adaptador.dao;
 
-import com.ceiba.aprendiz.modelo.dto.ResumenClasesDTO;
+import com.ceiba.aprendiz.modelo.dto.ResumenAprendicesDTO;
 import com.ceiba.aprendiz.puerto.dao.DaoAprendiz;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
@@ -27,7 +27,7 @@ public class DaoAprendizMysql implements DaoAprendiz {
     }
 
     @Override
-    public List<ResumenClasesDTO> obtenerResumenDeAprendices(){
+    public List<ResumenAprendicesDTO> obtenerResumenDeAprendices(){
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
                 .query(sqlObtenerAprendices, mapeoListadoAprendices);
     }

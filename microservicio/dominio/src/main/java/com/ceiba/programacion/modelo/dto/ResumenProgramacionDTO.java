@@ -13,4 +13,6 @@ public class ResumenProgramacionDTO {
     private Long instructor;
     private Date fecha;
     private String hora;
+    private String asistencia;
+
 }

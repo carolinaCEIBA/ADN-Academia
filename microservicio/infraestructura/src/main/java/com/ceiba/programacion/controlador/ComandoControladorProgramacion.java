@@ -13,6 +13,7 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/academia")
+@CrossOrigin(origins = "http://localhost:4200")
 @Tag(name = "Controlador comando programacion")
 public class ComandoControladorProgramacion {
     private final ManejadorProgramar manejadorProgramar;

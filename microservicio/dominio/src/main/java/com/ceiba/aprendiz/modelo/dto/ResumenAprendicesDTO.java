@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class ResumenClasesDTO {
+public class ResumenAprendicesDTO {
     private Long id;
     private String nombre;
     private String apellido;
@@ -13,5 +13,7 @@ public class ResumenClasesDTO {
     private String documento;
     private String eps;
     private String categoria;
-    private String codigo;
+    private Double valorcurso;
+    private Double abono;
+
 }
