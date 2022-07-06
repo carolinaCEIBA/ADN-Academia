@@ -83,7 +83,13 @@ public class Programacion {
                 Programacion.verificacionSegundoPagoC1(abono);
             }
         } else if (clase.equals(ConstantesProgramacion.REFUERZO)){
+            if (categoria.equals(ConstantesProgramacion.B1)){
+                Programacion.validarRefuerzoB1(contadorPractica);
+                Programacion.verificacionSegundoPagoB1(abono);
+            } else if (categoria.equals(ConstantesProgramacion.C1)){
+                Programacion.validarRefuerzoC1(contadorPractica);
                 Programacion.verificacionSegundoPagoC1(abono);
+            }
         } else {
             throw new ExcepcionInvalido(ConstantesProgramacion.MENSAJE_INVALIDO);
         }
@@ -110,6 +116,18 @@ public class Programacion {
     public static void validarPracticaC1(Long contadorTeoria, Long contadorPractica) {
         if (!(contadorTeoria.equals(ConstantesProgramacion.CLASESTEORIA_C1) && (contadorPractica.equals(ConstantesProgramacion.PRIMER_REGISTRO)|| contadorPractica < ConstantesProgramacion.CLASESPRACTICA_C1))) {
             throw new ExcepcionTeoria(ConstantesProgramacion.MENSAJE_TEORIA);
+        }
+    }
+
+    public static void validarRefuerzoB1(Long contadorPractica) {
+        if (!contadorPractica.equals(ConstantesProgramacion.CLASESPRACTICA_B1)) {
+            throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
+        }
+    }
+
+    public static void validarRefuerzoC1(Long contadorPractica) {
+        if (!contadorPractica.equals(ConstantesProgramacion.CLASESPRACTICA_C1)) {
+            throw new ExcepcionValidacionClase(ConstantesProgramacion.MENSAJE_CLASE);
         }
     }
 

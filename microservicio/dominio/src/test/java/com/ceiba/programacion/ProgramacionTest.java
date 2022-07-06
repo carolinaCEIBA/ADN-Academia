@@ -4,6 +4,7 @@ import com.ceiba.BasePrueba;
 import com.ceiba.aprendiz.AprendizTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.excepciones.ExcepcionInstructor;
+import com.ceiba.excepciones.ExcepcionInvalido;
 import com.ceiba.excepciones.ExcepcionTeoria;
 import com.ceiba.excepciones.ExcepcionValidacionClase;
 import com.ceiba.programacion.modelo.entidad.ConstantesProgramacion;
@@ -134,6 +135,23 @@ public class ProgramacionTest {
             BasePrueba.assertThrows(() -> Programacion.orquestadorClase(26l, 0l, 1l, ConstantesProgramacion.B1, ConstantesProgramacion.TOTAL_B1),
                     ExcepcionValidacionClase.class,
                     ConstantesProgramacion.MENSAJE_CLASE);
+        }
+
+        @Test
+        void orquestarCaso11(){
+            Programacion.orquestadorClase(ConstantesProgramacion.CLASESTEORIA_B1, ConstantesProgramacion.CLASESPRACTICA_B1, ConstantesProgramacion.REFUERZO, ConstantesProgramacion.B1, ConstantesProgramacion.TOTAL_B1);
+        }
+
+        @Test
+        void orquestarCaso12(){
+            Programacion.orquestadorClase(ConstantesProgramacion.CLASESTEORIA_C1, ConstantesProgramacion.CLASESPRACTICA_C1, ConstantesProgramacion.REFUERZO, ConstantesProgramacion.C1, ConstantesProgramacion.TOTAL_C1);
+        }
+
+        @Test
+        void orquestarCaso13(){
+            BasePrueba.assertThrows(() -> Programacion.orquestadorClase(ConstantesProgramacion.CLASESTEORIA_C1, ConstantesProgramacion.CLASESPRACTICA_C1, ConstantesProgramacion.FALLA, ConstantesProgramacion.C1, ConstantesProgramacion.TOTAL_C1),
+                    ExcepcionInvalido.class,
+                    ConstantesProgramacion.MENSAJE_INVALIDO);
         }
 
         @Test

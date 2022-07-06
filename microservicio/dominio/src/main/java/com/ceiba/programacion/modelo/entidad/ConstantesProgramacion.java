@@ -9,8 +9,8 @@ public class ConstantesProgramacion {
     public static final String B1 = "B1";
     public static final Long TEORIA = 1l;
     public static final Long PRACTICA = 2l;
-    public static final Long REFUERZO = 2l;
-
+    public static final Long REFUERZO = 3l;
+    public static final Long FALLA = 5l;
     public static final Long PRIMER_REGISTRO = 0l;
     public static final Long CLASESTEORIA_B1 = 25l;
     public static final Long CLASESPRACTICA_B1 = 20l;
