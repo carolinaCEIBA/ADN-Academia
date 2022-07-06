@@ -61,11 +61,11 @@ class ComandoControladorProgramacionTest {
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        Date fecha = sdf.parse("2021/06/18");
-        Assertions.assertEquals(5l, programacionGuardada.getIdprogramacion());
+        Date fecha = sdf.parse("2021/06/20");
+        Assertions.assertEquals(2l, programacionGuardada.getIdprogramacion());
         Assertions.assertEquals(1l, programacionGuardada.getClase());
-        Assertions.assertEquals(5l, programacionGuardada.getAprendiz());
-        Assertions.assertEquals(6l, programacionGuardada.getInstructor());
+        Assertions.assertEquals(3l, programacionGuardada.getAprendiz());
+        Assertions.assertEquals(2l, programacionGuardada.getInstructor());
         Assertions.assertEquals(fecha, programacionGuardada.getFecha());
         Assertions.assertEquals("04:00 pm", programacionGuardada.getHora());
         Assertions.assertEquals("No", programacionGuardada.getAsistencia());

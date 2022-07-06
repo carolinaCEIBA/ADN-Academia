@@ -14,9 +14,9 @@ public class MapeoListadoProgramacion implements RowMapper<ResumenProgramacionDT
 
     @Override
     public ResumenProgramacionDTO mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        var clase = resultSet.getLong("clase");
-        var aprendiz = resultSet.getLong("aprendiz");
-        var instructor = resultSet.getLong("instructor");
+        var clase = resultSet.getString("descripcion");
+        var aprendiz = resultSet.getString("nombre");
+        var instructor = resultSet.getString("nombreins");
         var fecha = resultSet.getDate("fecha");
         var hora = resultSet.getString("hora");
         var asistencia = resultSet.getString("asistencia");

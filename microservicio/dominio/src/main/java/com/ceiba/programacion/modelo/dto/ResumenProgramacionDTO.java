@@ -8,9 +8,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 public class ResumenProgramacionDTO {
-    private Long clase;
-    private Long aprendiz;
-    private Long instructor;
+    private String clase;
+    private String aprendiz;
+    private String instructor;
     private Date fecha;
     private String hora;
     private String asistencia;
