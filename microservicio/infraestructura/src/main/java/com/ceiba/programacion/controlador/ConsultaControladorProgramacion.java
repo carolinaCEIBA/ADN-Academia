@@ -1,6 +1,5 @@
 package com.ceiba.programacion.controlador;
 
-import com.ceiba.aprendiz.modelo.dto.ResumenAprendicesDTO;
 import com.ceiba.factura.consulta.ManejadorConsultaProgramacion;
 import com.ceiba.programacion.modelo.dto.ResumenProgramacionDTO;
 import io.swagger.v3.oas.annotations.Operation;
