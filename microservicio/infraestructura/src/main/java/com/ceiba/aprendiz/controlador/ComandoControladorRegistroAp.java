@@ -1,7 +1,6 @@
 package com.ceiba.aprendiz.controlador;
 
 import com.ceiba.ComandoRespuesta;
-import com.ceiba.factura.comando.ComandoSolicitudProgramar;
 import com.ceiba.factura.comando.ComandoSolicitudRegistrarAp;
 import com.ceiba.factura.comando.manejador.ManejadorRegistrarAp;
 import io.swagger.v3.oas.annotations.Operation;
